@@ -1,0 +1,58 @@
+{
+    "kind": "collectionType",
+    "collectionName": "sites",
+    "info": {
+        "singularName": "site",
+        "pluralName": "sites",
+        "displayName": "Site"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "name"
+        },
+        "domain_us": {
+            "type": "string",
+            "required": true
+        },
+        "mx_site": {
+            "type": "boolean",
+            "default": false
+        },
+        "domain_mx": {
+            "type": "string",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "mx_site"
+                        },
+                        true
+                    ]
+                }
+            },
+            "required": true
+        },
+        "pages": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::page.page",
+            "mappedBy": "site"
+        },
+        "faqs": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::faq.faq",
+            "mappedBy": "site"
+        }
+    }
+}

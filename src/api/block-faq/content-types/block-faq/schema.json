@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "block_faqs",
+  "info": {
+    "singularName": "block-faq",
+    "pluralName": "block-faqs",
+    "displayName": "block_faq"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Faq": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "faq.faq",
+      "repeatable": true
+    }
+  }
+}

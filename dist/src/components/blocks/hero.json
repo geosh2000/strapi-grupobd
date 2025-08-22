@@ -1,0 +1,36 @@
+{
+    "collectionName": "components_blocks_heroes",
+    "info": {
+        "displayName": "Hero",
+        "icon": "apps"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "background": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "sort": {
+            "type": "integer",
+            "min": 1
+        },
+        "buttons": {
+            "type": "component",
+            "component": "shared.buttons",
+            "repeatable": true
+        }
+    },
+    "config": {}
+}

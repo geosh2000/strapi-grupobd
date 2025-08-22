@@ -1,0 +1,59 @@
+{
+    "collectionName": "components_shared_buttons",
+    "info": {
+        "displayName": "buttons",
+        "icon": "cursor"
+    },
+    "options": {},
+    "attributes": {
+        "label": {
+            "type": "string",
+            "required": true
+        },
+        "url": {
+            "type": "string",
+            "regex": "^(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/[a-zA-Z0-9]+\\.[^\\s]{2,}|[a-zA-Z0-9]+\\.[^\\s]{2,})$"
+        },
+        "sort": {
+            "type": "integer",
+            "min": 1
+        },
+        "hasClass": {
+            "type": "boolean",
+            "default": false
+        },
+        "className": {
+            "type": "string",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "hasClass"
+                        },
+                        true
+                    ]
+                }
+            },
+            "required": true
+        },
+        "hasCss": {
+            "type": "boolean",
+            "default": false
+        },
+        "css": {
+            "type": "text",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "hasCss"
+                        },
+                        true
+                    ]
+                }
+            },
+            "required": true
+        }
+    },
+    "config": {}
+}

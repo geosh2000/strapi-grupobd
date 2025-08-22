@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_shared_nav_links",
+  "info": {
+    "displayName": "navLinks",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "sectionId": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
