@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blocks_comparatives",
+  "info": {
+    "displayName": "Comparative",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Values": {
+      "type": "enumeration",
+      "enum": [
+        "uno",
+        "dos",
+        "tres"
+      ]
+    }
+  },
+  "config": {}
+}

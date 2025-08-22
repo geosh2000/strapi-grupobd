@@ -654,6 +654,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'shared.seo',
         'shared.quote',
         'shared.buttons',
+        'blocks.comparative',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

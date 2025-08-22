@@ -64,7 +64,8 @@
                 "shared.slider",
                 "shared.seo",
                 "shared.quote",
-                "shared.buttons"
+                "shared.buttons",
+                "blocks.comparative"
             ]
         }
     }

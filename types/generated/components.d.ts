@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BlocksComparative extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_comparatives';
+  info: {
+    displayName: 'Comparative';
+    icon: 'dashboard';
+  };
+  attributes: {
+    Title: Schema.Attribute.String;
+    Values: Schema.Attribute.Enumeration<['uno', 'dos', 'tres']>;
+  };
+}
+
 export interface BlocksHero extends Struct.ComponentSchema {
   collectionName: 'components_blocks_heroes';
   info: {
@@ -135,6 +147,7 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'blocks.comparative': BlocksComparative;
       'blocks.hero': BlocksHero;
       'faq.faq': FaqFaq;
       'shared.buttons': SharedButtons;
