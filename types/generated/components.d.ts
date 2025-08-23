@@ -31,6 +31,7 @@ export interface BlocksHero extends Struct.ComponentSchema {
         },
         number
       >;
+    subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
 }
@@ -54,8 +55,9 @@ export interface SharedButtons extends Struct.ComponentSchema {
     icon: 'cursor';
   };
   attributes: {
-    className: Schema.Attribute.String & Schema.Attribute.Required;
-    css: Schema.Attribute.Text & Schema.Attribute.Required;
+    button_id: Schema.Attribute.String;
+    className: Schema.Attribute.String;
+    css: Schema.Attribute.Text;
     hasClass: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     hasCss: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String & Schema.Attribute.Required;

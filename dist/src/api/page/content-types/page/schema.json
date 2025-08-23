@@ -15,22 +15,13 @@
         }
     },
     "attributes": {
-        "slug": {
-            "type": "uid",
-            "pluginOptions": {
-                "i18n": {
-                    "localized": true
-                }
-            },
-            "required": true
-        },
         "site": {
             "type": "relation",
             "relation": "manyToOne",
             "target": "api::site.site",
             "inversedBy": "pages"
         },
-        "page": {
+        "name": {
             "type": "string",
             "pluginOptions": {
                 "i18n": {
@@ -67,6 +58,19 @@
                 "shared.buttons",
                 "blocks.comparative"
             ]
+        },
+        "slug": {
+            "type": "customField",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "customField": "plugin::auto-locales-slug.auto-locales-slug",
+            "required": true,
+            "options": {
+                "pattern": "name"
+            }
         }
     }
 }

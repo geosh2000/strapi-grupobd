@@ -636,7 +636,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>;
-    page: Schema.Attribute.String &
+    name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -664,8 +664,14 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
       }>;
     publishedAt: Schema.Attribute.DateTime;
     site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
-    slug: Schema.Attribute.UID &
+    slug: Schema.Attribute.String &
       Schema.Attribute.Required &
+      Schema.Attribute.CustomField<
+        'plugin::auto-locales-slug.auto-locales-slug',
+        {
+          pattern: 'name';
+        }
+      > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
