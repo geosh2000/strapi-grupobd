@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_shared_badges",
+  "info": {
+    "displayName": "badge",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "label_id": {
+      "type": "string"
+    },
+    "sort": {
+      "type": "integer"
+    },
+    "hasClass": {
+      "type": "boolean"
+    },
+    "class": {
+      "type": "string"
+    },
+    "hasCss": {
+      "type": "boolean"
+    },
+    "css": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

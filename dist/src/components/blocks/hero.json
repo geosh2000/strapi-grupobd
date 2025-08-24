@@ -33,6 +33,11 @@
             "type": "component",
             "component": "shared.buttons",
             "repeatable": true
+        },
+        "badge": {
+            "type": "component",
+            "component": "shared.badge",
+            "repeatable": true
         }
     },
     "config": {}

@@ -30,6 +30,19 @@
       },
       "required": true
     },
+    "slug": {
+      "type": "customField",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "customField": "plugin::auto-locales-slug.auto-locales-slug",
+      "required": true,
+      "options": {
+        "pattern": "name"
+      }
+    },
     "title": {
       "type": "string",
       "pluginOptions": {
@@ -53,24 +66,20 @@
         "faq.faq",
         "blocks.hero",
         "shared.slider",
-        "shared.seo",
         "shared.quote",
         "shared.buttons",
         "blocks.comparative"
       ]
     },
-    "slug": {
-      "type": "customField",
+    "seo": {
+      "type": "component",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "customField": "plugin::auto-locales-slug.auto-locales-slug",
-      "required": true,
-      "options": {
-        "pattern": "name"
-      }
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }
