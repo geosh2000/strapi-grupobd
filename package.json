@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.23.0",
+    "@strapi/plugin-color-picker": "^5.23.0",
     "@strapi/plugin-graphql": "^5.23.0",
     "@strapi/plugin-seo": "^2.0.8",
     "@strapi/plugin-users-permissions": "5.23.0",
@@ -25,10 +26,12 @@
     "esbuild": "^0.21.5",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
+    "monaco-editor": "^0.52.2",
     "mysql2": "3.9.8",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-code-editor-custom-field": "^1.1.0",
     "strapi-plugin-auto-locales-slug": "^0.0.4",
     "styled-components": "^6.0.0"
   },
@@ -36,7 +39,8 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite-plugin-monaco-editor": "^1.1.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

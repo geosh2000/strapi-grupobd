@@ -3,18 +3,22 @@
  * Any modifications made will be discarded.
  */
 import strapiCloud from "@strapi/plugin-cloud/strapi-admin";
+import colorPicker from "@strapi/plugin-color-picker/strapi-admin";
 import graphql from "@strapi/plugin-graphql/strapi-admin";
 import seo from "@strapi/plugin-seo/strapi-admin";
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
+import strapiCodeEditorCustomField from "strapi-code-editor-custom-field/strapi-admin";
 import autoLocalesSlug from "strapi-plugin-auto-locales-slug/strapi-admin";
 import { renderAdmin } from "@strapi/strapi/admin";
 
 renderAdmin(document.getElementById("strapi"), {
   plugins: {
     "strapi-cloud": strapiCloud,
+    "color-picker": colorPicker,
     graphql: graphql,
     seo: seo,
     "users-permissions": usersPermissions,
+    "strapi-code-editor-custom-field": strapiCodeEditorCustomField,
     "auto-locales-slug": autoLocalesSlug,
   },
 });

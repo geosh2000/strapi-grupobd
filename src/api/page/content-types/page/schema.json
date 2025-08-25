@@ -60,14 +60,8 @@
         }
       },
       "components": [
-        "shared.rich-text",
-        "shared.media",
-        "shared.nav-links",
         "faq.faq",
         "blocks.hero",
-        "shared.slider",
-        "shared.quote",
-        "shared.buttons",
         "blocks.comparative"
       ]
     },

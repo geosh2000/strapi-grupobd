@@ -643,17 +643,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         };
       }>;
     page_structure: Schema.Attribute.DynamicZone<
-      [
-        'shared.rich-text',
-        'shared.media',
-        'shared.nav-links',
-        'faq.faq',
-        'blocks.hero',
-        'shared.slider',
-        'shared.quote',
-        'shared.buttons',
-        'blocks.comparative',
-      ]
+      ['faq.faq', 'blocks.hero', 'blocks.comparative']
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -711,6 +701,14 @@ export interface ApiSiteSite extends Struct.CollectionTypeSchema {
     domain_mx: Schema.Attribute.String & Schema.Attribute.Required;
     domain_us: Schema.Attribute.String & Schema.Attribute.Required;
     faqs: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'>;
+    global_css: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'css';
+          loaderUrl: '/monaco-editor/min/vs/loader.js';
+        }
+      >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::site.site'> &
       Schema.Attribute.Private;

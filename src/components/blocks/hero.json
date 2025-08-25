@@ -12,6 +12,10 @@
     "subtitle": {
       "type": "string"
     },
+    "sort": {
+      "type": "integer",
+      "min": 1
+    },
     "description": {
       "type": "richtext"
     },
@@ -24,20 +28,6 @@
         "videos",
         "audios"
       ]
-    },
-    "sort": {
-      "type": "integer",
-      "min": 1
-    },
-    "buttons": {
-      "type": "component",
-      "component": "shared.buttons",
-      "repeatable": true
-    },
-    "badge": {
-      "type": "component",
-      "component": "shared.badge",
-      "repeatable": true
     }
   },
   "config": {}

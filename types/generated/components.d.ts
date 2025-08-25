@@ -22,8 +22,6 @@ export interface BlocksHero extends Struct.ComponentSchema {
     background: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
-    badge: Schema.Attribute.Component<'shared.badge', true>;
-    buttons: Schema.Attribute.Component<'shared.buttons', true>;
     description: Schema.Attribute.RichText;
     sort: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<

@@ -53,6 +53,14 @@
       "relation": "oneToMany",
       "target": "api::faq.faq",
       "mappedBy": "site"
+    },
+    "global_css": {
+      "type": "customField",
+      "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
+      "options": {
+        "language": "css",
+        "loaderUrl": "/monaco-editor/min/vs/loader.js"
+      }
     }
   }
 }

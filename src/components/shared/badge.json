@@ -19,13 +19,33 @@
       "type": "boolean"
     },
     "class": {
-      "type": "string"
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "hasClass"
+            },
+            true
+          ]
+        }
+      }
     },
     "hasCss": {
       "type": "boolean"
     },
     "css": {
-      "type": "string"
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "hasCss"
+            },
+            true
+          ]
+        }
+      }
     }
   },
   "config": {}
