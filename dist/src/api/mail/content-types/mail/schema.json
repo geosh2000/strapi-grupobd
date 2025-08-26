@@ -64,6 +64,16 @@
             }
         },
         "header": {
+            "type": "component",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "component": "mailing.header",
+            "repeatable": false
+        },
+        "body": {
             "type": "dynamiczone",
             "pluginOptions": {
                 "i18n": {
@@ -71,10 +81,20 @@
                 }
             },
             "components": [
-                "mailing.header",
-                "mailing.footer",
-                "mailing.mail-body"
+                "shared.rich-text",
+                "shared.buttons",
+                "shared.media"
             ]
+        },
+        "footer": {
+            "type": "component",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "component": "mailing.footer",
+            "repeatable": true
         }
     }
 }

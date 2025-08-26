@@ -583,6 +583,14 @@ export interface ApiMailMail extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    body: Schema.Attribute.DynamicZone<
+      ['shared.rich-text', 'shared.buttons', 'shared.media']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -598,9 +606,13 @@ export interface ApiMailMail extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    header: Schema.Attribute.DynamicZone<
-      ['mailing.header', 'mailing.footer', 'mailing.mail-body']
-    > &
+    footer: Schema.Attribute.Component<'mailing.footer', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    header: Schema.Attribute.Component<'mailing.header', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
