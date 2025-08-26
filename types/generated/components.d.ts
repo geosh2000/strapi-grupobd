@@ -160,6 +160,24 @@ export interface SharedContact extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedHtml extends Struct.ComponentSchema {
+  collectionName: 'components_shared_htmls';
+  info: {
+    displayName: 'Html';
+  };
+  attributes: {
+    html: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'html';
+        }
+      >;
+    name: Schema.Attribute.String;
+    sort: Schema.Attribute.Integer;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -290,6 +308,7 @@ declare module '@strapi/strapi' {
       'shared.badge': SharedBadge;
       'shared.buttons': SharedButtons;
       'shared.contact': SharedContact;
+      'shared.html': SharedHtml;
       'shared.media': SharedMedia;
       'shared.nav-links': SharedNavLinks;
       'shared.open-graph': SharedOpenGraph;

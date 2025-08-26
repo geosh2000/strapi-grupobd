@@ -83,7 +83,8 @@
             "components": [
                 "shared.rich-text",
                 "shared.buttons",
-                "shared.media"
+                "shared.media",
+                "shared.html"
             ]
         },
         "footer": {
