@@ -17,12 +17,8 @@ module.exports = [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          "default-src": ["'self'"],
-          "script-src": ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
-          "style-src": ["'self'", "'unsafe-inline'"],
-          "img-src": ["'self'", "data:"],
-          "connect-src": ["'self'"],
-          "font-src": ["'self'", "data:"],
+          'script-src-elem': ["'self'", "'unsafe-inline'", 'cdn.jsdelivr.net'],
+          upgradeInsecureRequests: null,
         },
         disableAdmin: false, // esto permite scripts externos en el admin
       },

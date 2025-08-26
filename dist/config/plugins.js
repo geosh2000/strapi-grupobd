@@ -1,14 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = () => ({
+exports.default = ({ env }) => ({
     graphql: {
-        enabled: true,
         config: {
-            playgroundAlways: true, // fuerza usar el Playground en vez de Apollo Sandbox
-            defaultLimit: 25,
-            maxLimit: 100,
-            apolloServer: {
-                tracing: false,
+            endpoint: '/graphql',
+            shadowCRUD: true,
+            landingPage: (strapi) => {
+                if (env("NODE_ENV") !== "production") {
+                    return true;
+                }
+                else {
+                    return false;
+                }
             },
         },
     },

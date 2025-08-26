@@ -1,0 +1,14 @@
+{
+    "collectionName": "components_mailing_footers",
+    "info": {
+        "displayName": "footer",
+        "icon": "arrowDown"
+    },
+    "options": {},
+    "attributes": {
+        "text": {
+            "type": "richtext"
+        }
+    },
+    "config": {}
+}

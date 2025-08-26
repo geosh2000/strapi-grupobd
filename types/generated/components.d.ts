@@ -47,6 +47,53 @@ export interface FaqFaq extends Struct.ComponentSchema {
   };
 }
 
+export interface MailingFooter extends Struct.ComponentSchema {
+  collectionName: 'components_mailing_footers';
+  info: {
+    displayName: 'footer';
+    icon: 'arrowDown';
+  };
+  attributes: {
+    text: Schema.Attribute.RichText;
+  };
+}
+
+export interface MailingHeader extends Struct.ComponentSchema {
+  collectionName: 'components_mailing_headers';
+  info: {
+    displayName: 'header';
+  };
+  attributes: {
+    bg_color: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
+    image: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface MailingMailBody extends Struct.ComponentSchema {
+  collectionName: 'components_mailing_mail_bodies';
+  info: {
+    displayName: 'mailBody';
+    icon: 'bulletList';
+  };
+  attributes: {
+    html: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'html';
+        }
+      >;
+    json_text: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<'plugin::strapi-code-editor-custom-field.code-editor-json'>;
+    media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+  };
+}
+
 export interface SharedBadge extends Struct.ComponentSchema {
   collectionName: 'components_shared_badges';
   info: {
@@ -85,6 +132,21 @@ export interface SharedButtons extends Struct.ComponentSchema {
         number
       >;
     url: Schema.Attribute.String;
+  };
+}
+
+export interface SharedContact extends Struct.ComponentSchema {
+  collectionName: 'components_shared_contacts';
+  info: {
+    displayName: 'contact';
+    icon: 'phone';
+  };
+  attributes: {
+    contact_mail: Schema.Attribute.String;
+    phone_mx: Schema.Attribute.String;
+    phone_rest: Schema.Attribute.String;
+    phone_us: Schema.Attribute.String;
+    privacy_policy_link: Schema.Attribute.String;
   };
 }
 
@@ -204,8 +266,12 @@ declare module '@strapi/strapi' {
       'blocks.comparative': BlocksComparative;
       'blocks.hero': BlocksHero;
       'faq.faq': FaqFaq;
+      'mailing.footer': MailingFooter;
+      'mailing.header': MailingHeader;
+      'mailing.mail-body': MailingMailBody;
       'shared.badge': SharedBadge;
       'shared.buttons': SharedButtons;
+      'shared.contact': SharedContact;
       'shared.media': SharedMedia;
       'shared.nav-links': SharedNavLinks;
       'shared.open-graph': SharedOpenGraph;

@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_mailing_mail_bodies",
+  "info": {
+    "displayName": "mailBody",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "html": {
+      "type": "customField",
+      "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
+      "options": {
+        "language": "html"
+      }
+    },
+    "json_text": {
+      "type": "customField",
+      "customField": "plugin::strapi-code-editor-custom-field.code-editor-json"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

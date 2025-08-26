@@ -58,9 +58,19 @@
             "type": "customField",
             "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
             "options": {
-                "language": "css",
-                "loaderUrl": "/monaco-editor/min/vs/loader.js"
+                "language": "css"
             }
+        },
+        "contact_fields": {
+            "type": "component",
+            "component": "shared.contact",
+            "repeatable": false
+        },
+        "mail": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::mail.mail",
+            "mappedBy": "site"
         }
     }
 }

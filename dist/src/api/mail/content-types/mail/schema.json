@@ -1,0 +1,80 @@
+{
+    "kind": "collectionType",
+    "collectionName": "mails",
+    "info": {
+        "singularName": "mail",
+        "pluralName": "mails",
+        "displayName": "mail"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "slug": {
+            "type": "customField",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "customField": "plugin::auto-locales-slug.auto-locales-slug",
+            "required": true,
+            "options": {
+                "pattern": "name"
+            }
+        },
+        "name": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "required": true
+        },
+        "site": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::site.site",
+            "inversedBy": "mail"
+        },
+        "subject": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "css": {
+            "type": "customField",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
+            "options": {
+                "language": "css"
+            }
+        },
+        "header": {
+            "type": "dynamiczone",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "components": [
+                "mailing.header",
+                "mailing.footer",
+                "mailing.mail-body"
+            ]
+        }
+    }
+}
