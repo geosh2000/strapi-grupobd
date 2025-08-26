@@ -6,6 +6,13 @@
     },
     "options": {},
     "attributes": {
+        "name": {
+            "type": "string"
+        },
+        "sort": {
+            "type": "integer",
+            "min": 1
+        },
         "label": {
             "type": "string",
             "required": true
@@ -13,49 +20,20 @@
         "button_id": {
             "type": "string"
         },
-        "sort": {
-            "type": "integer",
-            "min": 1
-        },
         "url": {
             "type": "string",
             "regex": "^(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/[a-zA-Z0-9]+\\.[^\\s]{2,}|[a-zA-Z0-9]+\\.[^\\s]{2,})$"
         },
-        "hasClass": {
-            "type": "boolean",
-            "default": false
-        },
-        "className": {
-            "type": "string",
-            "conditions": {
-                "visible": {
-                    "==": [
-                        {
-                            "var": "hasClass"
-                        },
-                        true
-                    ]
-                }
-            },
+        "class": {
+            "type": "text",
             "required": false
-        },
-        "hasCss": {
-            "type": "boolean",
-            "default": false
         },
         "css": {
-            "type": "text",
-            "conditions": {
-                "visible": {
-                    "==": [
-                        {
-                            "var": "hasCss"
-                        },
-                        true
-                    ]
-                }
-            },
-            "required": false
+            "type": "customField",
+            "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
+            "options": {
+                "language": "css"
+            }
         }
     },
     "config": {}

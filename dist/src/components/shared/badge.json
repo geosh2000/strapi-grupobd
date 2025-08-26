@@ -6,45 +6,26 @@
     },
     "options": {},
     "attributes": {
-        "label": {
-            "type": "string"
-        },
-        "label_id": {
+        "name": {
             "type": "string"
         },
         "sort": {
             "type": "integer"
         },
-        "hasClass": {
-            "type": "boolean"
+        "label": {
+            "type": "string"
+        },
+        "badge_id": {
+            "type": "string"
         },
         "class": {
-            "type": "string",
-            "conditions": {
-                "visible": {
-                    "==": [
-                        {
-                            "var": "hasClass"
-                        },
-                        true
-                    ]
-                }
-            }
-        },
-        "hasCss": {
-            "type": "boolean"
+            "type": "text"
         },
         "css": {
-            "type": "string",
-            "conditions": {
-                "visible": {
-                    "==": [
-                        {
-                            "var": "hasCss"
-                        },
-                        true
-                    ]
-                }
+            "type": "customField",
+            "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
+            "options": {
+                "language": "css"
             }
         }
     },

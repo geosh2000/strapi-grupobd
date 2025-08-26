@@ -101,12 +101,17 @@ export interface SharedBadge extends Struct.ComponentSchema {
     icon: 'grid';
   };
   attributes: {
-    class: Schema.Attribute.String;
-    css: Schema.Attribute.String;
-    hasClass: Schema.Attribute.Boolean;
-    hasCss: Schema.Attribute.Boolean;
+    badge_id: Schema.Attribute.String;
+    class: Schema.Attribute.Text;
+    css: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'css';
+        }
+      >;
     label: Schema.Attribute.String;
-    label_id: Schema.Attribute.String;
+    name: Schema.Attribute.String;
     sort: Schema.Attribute.Integer;
   };
 }
@@ -119,11 +124,16 @@ export interface SharedButtons extends Struct.ComponentSchema {
   };
   attributes: {
     button_id: Schema.Attribute.String;
-    className: Schema.Attribute.String;
-    css: Schema.Attribute.Text;
-    hasClass: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    hasCss: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    class: Schema.Attribute.Text;
+    css: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'css';
+        }
+      >;
     label: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String;
     sort: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
         {
@@ -217,6 +227,14 @@ export interface SharedRichText extends Struct.ComponentSchema {
   };
   attributes: {
     body: Schema.Attribute.RichText;
+    name: Schema.Attribute.String;
+    sort: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
   };
 }
 
