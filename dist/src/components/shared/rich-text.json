@@ -16,6 +16,10 @@
         },
         "body": {
             "type": "richtext"
+        },
+        "type": {
+            "type": "string",
+            "default": "markdown"
         }
     }
 }

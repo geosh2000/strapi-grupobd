@@ -141,6 +141,7 @@ export interface SharedButtons extends Struct.ComponentSchema {
         },
         number
       >;
+    type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'button'>;
     url: Schema.Attribute.String;
   };
 }
@@ -175,6 +176,7 @@ export interface SharedHtml extends Struct.ComponentSchema {
       >;
     name: Schema.Attribute.String;
     sort: Schema.Attribute.Integer;
+    type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'html'>;
   };
 }
 
@@ -253,6 +255,7 @@ export interface SharedRichText extends Struct.ComponentSchema {
         },
         number
       >;
+    type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'markdown'>;
   };
 }
 
