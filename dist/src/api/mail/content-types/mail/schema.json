@@ -55,7 +55,7 @@
             "type": "customField",
             "pluginOptions": {
                 "i18n": {
-                    "localized": true
+                    "localized": false
                 }
             },
             "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",

@@ -23,6 +23,7 @@ export interface BlocksHero extends Struct.ComponentSchema {
       'images' | 'files' | 'videos' | 'audios'
     >;
     description: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     sort: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
         {

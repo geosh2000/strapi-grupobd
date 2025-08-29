@@ -603,7 +603,7 @@ export interface ApiMailMail extends Struct.CollectionTypeSchema {
       > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     footer: Schema.Attribute.Component<'mailing.footer', true> &
