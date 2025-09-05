@@ -736,7 +736,18 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         };
       }>;
     page_structure: Schema.Attribute.DynamicZone<
-      ['faq.faq', 'blocks.hero', 'blocks.comparative']
+      [
+        'shared.show-contact',
+        'shared.rich-text',
+        'shared.plain-text',
+        'shared.media',
+        'shared.input',
+        'shared.html',
+        'shared.contact',
+        'shared.card',
+        'shared.buttons',
+        'shared.badge',
+      ]
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
