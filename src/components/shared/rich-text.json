@@ -10,12 +10,25 @@
     "name": {
       "type": "string"
     },
+    "section": {
+      "type": "string"
+    },
     "sort": {
       "type": "integer",
       "min": 0
     },
     "body": {
       "type": "richtext"
+    },
+    "class": {
+      "type": "text"
+    },
+    "css": {
+      "type": "customField",
+      "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
+      "options": {
+        "language": "css"
+      }
     },
     "type": {
       "type": "string",

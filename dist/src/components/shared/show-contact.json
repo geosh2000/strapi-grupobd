@@ -1,8 +1,8 @@
 {
-    "collectionName": "components_shared_media",
+    "collectionName": "components_shared_show_contacts",
     "info": {
-        "displayName": "Media",
-        "icon": "file-video"
+        "displayName": "showContact",
+        "icon": "phone"
     },
     "options": {},
     "attributes": {
@@ -15,14 +15,18 @@
         "sort": {
             "type": "integer"
         },
-        "file": {
+        "icon": {
             "type": "media",
             "multiple": false,
             "allowedTypes": [
                 "images",
                 "files",
-                "videos"
+                "videos",
+                "audios"
             ]
+        },
+        "contact": {
+            "type": "string"
         },
         "class": {
             "type": "text"
@@ -36,7 +40,8 @@
         },
         "type": {
             "type": "string",
-            "default": "media"
+            "default": "contact"
         }
-    }
+    },
+    "config": {}
 }

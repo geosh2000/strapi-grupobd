@@ -12,6 +12,9 @@
         "sort": {
             "type": "integer"
         },
+        "section": {
+            "type": "string"
+        },
         "label": {
             "type": "string"
         },
@@ -27,6 +30,10 @@
             "options": {
                 "language": "css"
             }
+        },
+        "type": {
+            "type": "string",
+            "default": "badge"
         }
     },
     "config": {}

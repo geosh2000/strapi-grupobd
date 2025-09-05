@@ -1,8 +1,8 @@
 {
-  "collectionName": "components_shared_media",
+  "collectionName": "components_shared_cards",
   "info": {
-    "displayName": "Media",
-    "icon": "file-video"
+    "displayName": "card",
+    "icon": "grid"
   },
   "options": {},
   "attributes": {
@@ -15,14 +15,24 @@
     "sort": {
       "type": "integer"
     },
-    "file": {
+    "icon": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images",
         "files",
-        "videos"
+        "videos",
+        "audios"
       ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
     },
     "class": {
       "type": "text"
@@ -36,7 +46,8 @@
     },
     "type": {
       "type": "string",
-      "default": "media"
+      "default": "card"
     }
-  }
+  },
+  "config": {}
 }

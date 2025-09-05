@@ -8,6 +8,9 @@
     "name": {
       "type": "string"
     },
+    "section": {
+      "type": "string"
+    },
     "sort": {
       "type": "integer"
     },

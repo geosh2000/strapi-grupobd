@@ -13,6 +13,9 @@
             "type": "integer",
             "min": 1
         },
+        "section": {
+            "type": "string"
+        },
         "label": {
             "type": "string",
             "required": true

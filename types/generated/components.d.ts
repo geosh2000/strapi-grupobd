@@ -113,7 +113,9 @@ export interface SharedBadge extends Struct.ComponentSchema {
       >;
     label: Schema.Attribute.String;
     name: Schema.Attribute.String;
+    section: Schema.Attribute.String;
     sort: Schema.Attribute.Integer;
+    type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'badge'>;
   };
 }
 
@@ -135,6 +137,7 @@ export interface SharedButtons extends Struct.ComponentSchema {
       >;
     label: Schema.Attribute.String & Schema.Attribute.Required;
     name: Schema.Attribute.String;
+    section: Schema.Attribute.String;
     sort: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
         {
@@ -144,6 +147,32 @@ export interface SharedButtons extends Struct.ComponentSchema {
       >;
     type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'button'>;
     url: Schema.Attribute.String;
+  };
+}
+
+export interface SharedCard extends Struct.ComponentSchema {
+  collectionName: 'components_shared_cards';
+  info: {
+    displayName: 'card';
+    icon: 'grid';
+  };
+  attributes: {
+    class: Schema.Attribute.Text;
+    css: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'css';
+        }
+      >;
+    description: Schema.Attribute.String;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String;
+    section: Schema.Attribute.String;
+    sort: Schema.Attribute.Integer;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'card'>;
   };
 }
 
@@ -176,8 +205,44 @@ export interface SharedHtml extends Struct.ComponentSchema {
         }
       >;
     name: Schema.Attribute.String;
+    section: Schema.Attribute.String;
     sort: Schema.Attribute.Integer;
     type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'html'>;
+  };
+}
+
+export interface SharedInput extends Struct.ComponentSchema {
+  collectionName: 'components_shared_inputs';
+  info: {
+    displayName: 'input';
+    icon: 'pencil';
+  };
+  attributes: {
+    class: Schema.Attribute.Text;
+    css: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'css';
+        }
+      >;
+    defaultValue: Schema.Attribute.String;
+    hidden: Schema.Attribute.Boolean;
+    input_id: Schema.Attribute.String;
+    inputType: Schema.Attribute.Enumeration<
+      ['text', 'number', 'select', 'radio', 'checkbox']
+    >;
+    label: Schema.Attribute.String;
+    name: Schema.Attribute.String;
+    placeholder: Schema.Attribute.String;
+    readOnly: Schema.Attribute.Boolean;
+    regex: Schema.Attribute.String;
+    required: Schema.Attribute.Boolean;
+    section: Schema.Attribute.String;
+    selectValues: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<'plugin::strapi-code-editor-custom-field.code-editor-json'>;
+    sort: Schema.Attribute.Integer;
+    type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'input'>;
   };
 }
 
@@ -188,7 +253,19 @@ export interface SharedMedia extends Struct.ComponentSchema {
     icon: 'file-video';
   };
   attributes: {
+    class: Schema.Attribute.Text;
+    css: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'css';
+        }
+      >;
     file: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    name: Schema.Attribute.String;
+    section: Schema.Attribute.String;
+    sort: Schema.Attribute.Integer;
+    type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'media'>;
   };
 }
 
@@ -227,6 +304,29 @@ export interface SharedOpenGraph extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedPlainText extends Struct.ComponentSchema {
+  collectionName: 'components_shared_plain_texts';
+  info: {
+    displayName: 'plainText';
+    icon: 'italic';
+  };
+  attributes: {
+    class: Schema.Attribute.Text;
+    css: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'css';
+        }
+      >;
+    name: Schema.Attribute.String;
+    section: Schema.Attribute.String;
+    sort: Schema.Attribute.Integer;
+    text: Schema.Attribute.String;
+    type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'text'>;
+  };
+}
+
 export interface SharedQuote extends Struct.ComponentSchema {
   collectionName: 'components_shared_quotes';
   info: {
@@ -248,7 +348,16 @@ export interface SharedRichText extends Struct.ComponentSchema {
   };
   attributes: {
     body: Schema.Attribute.RichText;
+    class: Schema.Attribute.Text;
+    css: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'css';
+        }
+      >;
     name: Schema.Attribute.String;
+    section: Schema.Attribute.String;
     sort: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
         {
@@ -288,6 +397,30 @@ export interface SharedSeo extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedShowContact extends Struct.ComponentSchema {
+  collectionName: 'components_shared_show_contacts';
+  info: {
+    displayName: 'showContact';
+    icon: 'phone';
+  };
+  attributes: {
+    class: Schema.Attribute.Text;
+    contact: Schema.Attribute.String;
+    css: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'css';
+        }
+      >;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String;
+    section: Schema.Attribute.String;
+    sort: Schema.Attribute.Integer;
+    type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'contact'>;
+  };
+}
+
 export interface SharedSlider extends Struct.ComponentSchema {
   collectionName: 'components_shared_sliders';
   info: {
@@ -297,6 +430,31 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
   attributes: {
     files: Schema.Attribute.Media<'images', true>;
+  };
+}
+
+export interface SharedSocialMedia extends Struct.ComponentSchema {
+  collectionName: 'components_shared_social_medias';
+  info: {
+    displayName: 'socialMedia';
+    icon: 'user';
+  };
+  attributes: {
+    altText: Schema.Attribute.String;
+    class: Schema.Attribute.Text;
+    css: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'css';
+        }
+      >;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String;
+    section: Schema.Attribute.String;
+    sort: Schema.Attribute.Integer;
+    type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'socialMedia'>;
+    url: Schema.Attribute.String;
   };
 }
 
@@ -311,15 +469,20 @@ declare module '@strapi/strapi' {
       'mailing.mail-body': MailingMailBody;
       'shared.badge': SharedBadge;
       'shared.buttons': SharedButtons;
+      'shared.card': SharedCard;
       'shared.contact': SharedContact;
       'shared.html': SharedHtml;
+      'shared.input': SharedInput;
       'shared.media': SharedMedia;
       'shared.nav-links': SharedNavLinks;
       'shared.open-graph': SharedOpenGraph;
+      'shared.plain-text': SharedPlainText;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
+      'shared.show-contact': SharedShowContact;
       'shared.slider': SharedSlider;
+      'shared.social-media': SharedSocialMedia;
     }
   }
 }

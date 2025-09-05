@@ -1,7 +1,8 @@
 {
-    "collectionName": "components_shared_htmls",
+    "collectionName": "components_shared_plain_texts",
     "info": {
-        "displayName": "Html"
+        "displayName": "plainText",
+        "icon": "italic"
     },
     "options": {},
     "attributes": {
@@ -14,16 +15,22 @@
         "sort": {
             "type": "integer"
         },
-        "html": {
+        "text": {
+            "type": "string"
+        },
+        "class": {
+            "type": "text"
+        },
+        "css": {
             "type": "customField",
             "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
             "options": {
-                "language": "html"
+                "language": "css"
             }
         },
         "type": {
             "type": "string",
-            "default": "html"
+            "default": "text"
         }
     },
     "config": {}

@@ -1,8 +1,8 @@
 {
-  "collectionName": "components_shared_media",
+  "collectionName": "components_shared_plain_texts",
   "info": {
-    "displayName": "Media",
-    "icon": "file-video"
+    "displayName": "plainText",
+    "icon": "italic"
   },
   "options": {},
   "attributes": {
@@ -15,14 +15,8 @@
     "sort": {
       "type": "integer"
     },
-    "file": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ]
+    "text": {
+      "type": "string"
     },
     "class": {
       "type": "text"
@@ -36,7 +30,8 @@
     },
     "type": {
       "type": "string",
-      "default": "media"
+      "default": "text"
     }
-  }
+  },
+  "config": {}
 }

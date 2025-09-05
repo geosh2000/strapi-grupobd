@@ -1,0 +1,72 @@
+{
+  "collectionName": "components_shared_inputs",
+  "info": {
+    "displayName": "input",
+    "icon": "pencil"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "section": {
+      "type": "string"
+    },
+    "sort": {
+      "type": "integer"
+    },
+    "label": {
+      "type": "string"
+    },
+    "inputType": {
+      "type": "enumeration",
+      "enum": [
+        "text",
+        "number",
+        "select",
+        "radio",
+        "checkbox"
+      ]
+    },
+    "input_id": {
+      "type": "string"
+    },
+    "placeholder": {
+      "type": "string"
+    },
+    "regex": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "readOnly": {
+      "type": "boolean"
+    },
+    "hidden": {
+      "type": "boolean"
+    },
+    "selectValues": {
+      "type": "customField",
+      "customField": "plugin::strapi-code-editor-custom-field.code-editor-json"
+    },
+    "defaultValue": {
+      "type": "string"
+    },
+    "class": {
+      "type": "text"
+    },
+    "css": {
+      "type": "customField",
+      "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
+      "options": {
+        "language": "css"
+      }
+    },
+    "type": {
+      "type": "string",
+      "default": "input"
+    }
+  },
+  "config": {}
+}
