@@ -803,7 +803,7 @@ export interface ApiSiteSite extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    domain_mx: Schema.Attribute.String & Schema.Attribute.Required;
+    domain_mx: Schema.Attribute.String;
     domain_us: Schema.Attribute.String & Schema.Attribute.Required;
     faqs: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'>;
     global_css: Schema.Attribute.Text &
@@ -817,7 +817,6 @@ export interface ApiSiteSite extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::site.site'> &
       Schema.Attribute.Private;
     mail: Schema.Attribute.Relation<'oneToMany', 'api::mail.mail'>;
-    mx_site: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;

@@ -24,23 +24,9 @@
             "type": "string",
             "required": true
         },
-        "mx_site": {
-            "type": "boolean",
-            "default": false
-        },
         "domain_mx": {
             "type": "string",
-            "conditions": {
-                "visible": {
-                    "==": [
-                        {
-                            "var": "mx_site"
-                        },
-                        true
-                    ]
-                }
-            },
-            "required": true
+            "required": false
         },
         "pages": {
             "type": "relation",
