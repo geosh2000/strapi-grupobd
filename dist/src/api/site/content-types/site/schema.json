@@ -57,6 +57,24 @@
             "relation": "oneToMany",
             "target": "api::mail.mail",
             "mappedBy": "site"
+        },
+        "features": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::feature.feature",
+            "mappedBy": "site"
+        },
+        "plans": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::plan.plan",
+            "mappedBy": "site"
+        },
+        "plan_pivot": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::plan-pivot.plan-pivot",
+            "mappedBy": "site"
         }
     }
 }

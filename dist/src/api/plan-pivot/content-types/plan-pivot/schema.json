@@ -1,0 +1,40 @@
+{
+    "kind": "collectionType",
+    "collectionName": "plans_pivot",
+    "info": {
+        "singularName": "plan-pivot",
+        "pluralName": "plans-pivot",
+        "displayName": "planPivot"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "title": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "required": true
+        },
+        "plans": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::plan.plan",
+            "inversedBy": "plan_pivots"
+        },
+        "site": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::site.site",
+            "inversedBy": "plan_pivot"
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_plans_features",
+  "info": {
+    "displayName": "feature",
+    "icon": "priceTag"
+  },
+  "options": {},
+  "attributes": {
+    "feature": {
+      "type": "string",
+      "required": true
+    },
+    "sort": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

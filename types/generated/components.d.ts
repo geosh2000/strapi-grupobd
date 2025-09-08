@@ -95,6 +95,18 @@ export interface MailingMailBody extends Struct.ComponentSchema {
   };
 }
 
+export interface PlansFeature extends Struct.ComponentSchema {
+  collectionName: 'components_plans_features';
+  info: {
+    displayName: 'feature';
+    icon: 'priceTag';
+  };
+  attributes: {
+    feature: Schema.Attribute.String & Schema.Attribute.Required;
+    sort: Schema.Attribute.Integer;
+  };
+}
+
 export interface SharedBadge extends Struct.ComponentSchema {
   collectionName: 'components_shared_badges';
   info: {
@@ -467,6 +479,7 @@ declare module '@strapi/strapi' {
       'mailing.footer': MailingFooter;
       'mailing.header': MailingHeader;
       'mailing.mail-body': MailingMailBody;
+      'plans.feature': PlansFeature;
       'shared.badge': SharedBadge;
       'shared.buttons': SharedButtons;
       'shared.card': SharedCard;

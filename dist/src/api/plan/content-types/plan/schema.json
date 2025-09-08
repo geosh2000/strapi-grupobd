@@ -1,0 +1,54 @@
+{
+    "kind": "collectionType",
+    "collectionName": "plans",
+    "info": {
+        "singularName": "plan",
+        "pluralName": "plans",
+        "displayName": "plan"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "name": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "required": true
+        },
+        "price": {
+            "type": "decimal",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "features": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::feature.feature",
+            "inversedBy": "plans"
+        },
+        "site": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::site.site",
+            "inversedBy": "plans"
+        },
+        "plan_pivots": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::plan-pivot.plan-pivot",
+            "mappedBy": "plans"
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "kind": "collectionType",
+    "collectionName": "features",
+    "info": {
+        "singularName": "feature",
+        "pluralName": "features",
+        "displayName": "feature"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "name": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "required": true
+        },
+        "sort": {
+            "type": "integer",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            }
+        },
+        "site": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::site.site",
+            "inversedBy": "features"
+        },
+        "plans": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::plan.plan",
+            "mappedBy": "features"
+        }
+    }
+}
