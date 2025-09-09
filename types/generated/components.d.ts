@@ -199,7 +199,6 @@ export interface SharedContact extends Struct.ComponentSchema {
     phone_mx: Schema.Attribute.String;
     phone_rest: Schema.Attribute.String;
     phone_us: Schema.Attribute.String;
-    privacy_policy_link: Schema.Attribute.String;
   };
 }
 

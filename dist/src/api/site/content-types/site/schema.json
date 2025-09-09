@@ -24,9 +24,15 @@
             "type": "string",
             "required": true
         },
+        "privacy_policy_en": {
+            "type": "string"
+        },
         "domain_mx": {
             "type": "string",
             "required": false
+        },
+        "privacy_policy_es": {
+            "type": "string"
         },
         "pages": {
             "type": "relation",
@@ -40,17 +46,17 @@
             "target": "api::faq.faq",
             "mappedBy": "site"
         },
+        "contact_fields": {
+            "type": "component",
+            "component": "shared.contact",
+            "repeatable": false
+        },
         "global_css": {
             "type": "customField",
             "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
             "options": {
                 "language": "css"
             }
-        },
-        "contact_fields": {
-            "type": "component",
-            "component": "shared.contact",
-            "repeatable": false
         },
         "mail": {
             "type": "relation",

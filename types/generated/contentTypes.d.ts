@@ -966,6 +966,8 @@ export interface ApiSiteSite extends Struct.CollectionTypeSchema {
       'api::plan-pivot.plan-pivot'
     >;
     plans: Schema.Attribute.Relation<'oneToMany', 'api::plan.plan'>;
+    privacy_policy_en: Schema.Attribute.String;
+    privacy_policy_es: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
     updatedAt: Schema.Attribute.DateTime;
