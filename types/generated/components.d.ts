@@ -43,7 +43,7 @@ export interface FaqFaq extends Struct.ComponentSchema {
     icon: 'question';
   };
   attributes: {
-    answer: Schema.Attribute.String & Schema.Attribute.Required;
+    answer: Schema.Attribute.Blocks & Schema.Attribute.Required;
     question: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
