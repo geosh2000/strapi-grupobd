@@ -5,13 +5,9 @@ exports.default = ({ env }) => ({
         config: {
             endpoint: '/graphql',
             shadowCRUD: true,
-            landingPage: (strapi) => {
-                if (env("NODE_ENV") !== "production") {
-                    return true;
-                }
-                else {
-                    return false;
-                }
+            landingPage: (strapi) => env("NODE_ENV") !== "production",
+            apolloServer: {
+                introspection: true, // permite introspection incluso en prod
             },
         },
     },
