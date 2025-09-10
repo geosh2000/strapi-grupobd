@@ -84,7 +84,8 @@
         "shared.rich-text",
         "shared.buttons",
         "shared.media",
-        "shared.html"
+        "shared.html",
+        "shared.plain-text"
       ]
     },
     "footer": {

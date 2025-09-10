@@ -636,7 +636,13 @@ export interface ApiMailMail extends Struct.CollectionTypeSchema {
   };
   attributes: {
     body: Schema.Attribute.DynamicZone<
-      ['shared.rich-text', 'shared.buttons', 'shared.media', 'shared.html']
+      [
+        'shared.rich-text',
+        'shared.buttons',
+        'shared.media',
+        'shared.html',
+        'shared.plain-text',
+      ]
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
