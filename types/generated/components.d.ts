@@ -1,41 +1,5 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface BlocksComparative extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_comparatives';
-  info: {
-    displayName: 'Comparative';
-    icon: 'dashboard';
-  };
-  attributes: {
-    Title: Schema.Attribute.String;
-    Values: Schema.Attribute.Enumeration<['uno', 'dos', 'tres']>;
-  };
-}
-
-export interface BlocksHero extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_heroes';
-  info: {
-    displayName: 'Hero';
-    icon: 'apps';
-  };
-  attributes: {
-    background: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    description: Schema.Attribute.RichText;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    sort: Schema.Attribute.Integer &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
-    subtitle: Schema.Attribute.String;
-    title: Schema.Attribute.String;
-  };
-}
-
 export interface FaqFaq extends Struct.ComponentSchema {
   collectionName: 'components_faq_faqs';
   info: {
@@ -69,29 +33,6 @@ export interface MailingHeader extends Struct.ComponentSchema {
       Schema.Attribute.CustomField<'plugin::color-picker.color'>;
     image: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
-  };
-}
-
-export interface MailingMailBody extends Struct.ComponentSchema {
-  collectionName: 'components_mailing_mail_bodies';
-  info: {
-    displayName: 'mailBody';
-    icon: 'bulletList';
-  };
-  attributes: {
-    html: Schema.Attribute.Text &
-      Schema.Attribute.CustomField<
-        'plugin::strapi-code-editor-custom-field.code-editor-text',
-        {
-          language: 'html';
-        }
-      >;
-    json_text: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<'plugin::strapi-code-editor-custom-field.code-editor-json'>;
-    media: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
   };
 }
 
@@ -479,12 +420,9 @@ export interface SharedSocialMedia extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'blocks.comparative': BlocksComparative;
-      'blocks.hero': BlocksHero;
       'faq.faq': FaqFaq;
       'mailing.footer': MailingFooter;
       'mailing.header': MailingHeader;
-      'mailing.mail-body': MailingMailBody;
       'plans.feature': PlansFeature;
       'shared.badge': SharedBadge;
       'shared.buttons': SharedButtons;
