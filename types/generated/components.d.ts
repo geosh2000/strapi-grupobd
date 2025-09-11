@@ -377,6 +377,13 @@ export interface SharedRichText extends Struct.ComponentSchema {
         number
       >;
     type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'markdown'>;
+    wrapper: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-code-editor-custom-field.code-editor-text',
+        {
+          language: 'html';
+        }
+      >;
   };
 }
 

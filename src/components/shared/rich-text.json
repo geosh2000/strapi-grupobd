@@ -33,6 +33,13 @@
     "type": {
       "type": "string",
       "default": "markdown"
+    },
+    "wrapper": {
+      "type": "customField",
+      "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
+      "options": {
+        "language": "html"
+      }
     }
   }
 }
