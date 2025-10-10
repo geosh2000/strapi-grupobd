@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_plans_benefits",
+  "info": {
+    "displayName": "benefit",
+    "icon": "crown"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "details": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -49,6 +49,20 @@
             "relation": "manyToMany",
             "target": "api::plan-pivot.plan-pivot",
             "mappedBy": "plans"
+        },
+        "link_pasarela": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "plan_benefits": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::plan-benefit.plan-benefit",
+            "mappedBy": "plan"
         }
     }
 }

@@ -1,0 +1,35 @@
+{
+    "kind": "collectionType",
+    "collectionName": "plan_benefits",
+    "info": {
+        "singularName": "plan-benefit",
+        "pluralName": "plan-benefits",
+        "displayName": "plan_benefit"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "plan": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::plan.plan",
+            "inversedBy": "plan_benefits"
+        },
+        "benefits": {
+            "type": "component",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "component": "plans.benefit",
+            "repeatable": true
+        }
+    }
+}

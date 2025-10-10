@@ -36,6 +36,18 @@ export interface MailingHeader extends Struct.ComponentSchema {
   };
 }
 
+export interface PlansBenefit extends Struct.ComponentSchema {
+  collectionName: 'components_plans_benefits';
+  info: {
+    displayName: 'benefit';
+    icon: 'crown';
+  };
+  attributes: {
+    details: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface PlansFeature extends Struct.ComponentSchema {
   collectionName: 'components_plans_features';
   info: {
@@ -423,6 +435,7 @@ declare module '@strapi/strapi' {
       'faq.faq': FaqFaq;
       'mailing.footer': MailingFooter;
       'mailing.header': MailingHeader;
+      'plans.benefit': PlansBenefit;
       'plans.feature': PlansFeature;
       'shared.badge': SharedBadge;
       'shared.buttons': SharedButtons;

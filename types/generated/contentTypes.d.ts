@@ -640,6 +640,44 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPlanBenefitPlanBenefit extends Struct.CollectionTypeSchema {
+  collectionName: 'plan_benefits';
+  info: {
+    displayName: 'plan_benefit';
+    pluralName: 'plan-benefits';
+    singularName: 'plan-benefit';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    benefits: Schema.Attribute.Component<'plans.benefit', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::plan-benefit.plan-benefit'
+    >;
+    plan: Schema.Attribute.Relation<'manyToOne', 'api::plan.plan'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPlanPivotPlanPivot extends Struct.CollectionTypeSchema {
   collectionName: 'plans_pivot';
   info: {
@@ -700,6 +738,12 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     features: Schema.Attribute.Relation<'manyToMany', 'api::feature.feature'>;
+    link_pasarela: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::plan.plan'>;
     name: Schema.Attribute.String &
@@ -709,6 +753,10 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    plan_benefits: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::plan-benefit.plan-benefit'
+    >;
     plan_pivots: Schema.Attribute.Relation<
       'manyToMany',
       'api::plan-pivot.plan-pivot'
@@ -1289,6 +1337,7 @@ declare module '@strapi/strapi' {
       'api::feature.feature': ApiFeatureFeature;
       'api::mail.mail': ApiMailMail;
       'api::page.page': ApiPagePage;
+      'api::plan-benefit.plan-benefit': ApiPlanBenefitPlanBenefit;
       'api::plan-pivot.plan-pivot': ApiPlanPivotPlanPivot;
       'api::plan.plan': ApiPlanPlan;
       'api::site.site': ApiSiteSite;
