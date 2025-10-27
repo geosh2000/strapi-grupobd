@@ -15,6 +15,20 @@
     }
   },
   "attributes": {
+    "site": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site.site",
+      "inversedBy": "links"
+    },
+    "name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "link": {
       "type": "component",
       "pluginOptions": {
@@ -24,12 +38,6 @@
       },
       "component": "simple-components.link",
       "repeatable": false
-    },
-    "site": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::site.site",
-      "inversedBy": "links"
     }
   }
 }
