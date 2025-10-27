@@ -1,0 +1,28 @@
+{
+    "collectionName": "components_simple_components_media",
+    "info": {
+        "displayName": "media",
+        "icon": "picture"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "media": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "order": {
+            "type": "integer",
+            "min": 0
+        }
+    },
+    "config": {}
+}

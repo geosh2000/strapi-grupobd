@@ -60,6 +60,63 @@ export interface PlansFeature extends Struct.ComponentSchema {
   };
 }
 
+export interface RoomsRoomCard extends Struct.ComponentSchema {
+  collectionName: 'components_rooms_room_cards';
+  info: {
+    displayName: 'room-card';
+    icon: 'stack';
+  };
+  attributes: {
+    carrousel: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    description: Schema.Attribute.Blocks;
+    main_picture: Schema.Attribute.Media<'images'>;
+    name: Schema.Attribute.String;
+    room_amenities: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::room-amenity.room-amenity'
+    >;
+    room_specs: Schema.Attribute.Component<'rooms.specs', false>;
+    short_description: Schema.Attribute.Blocks;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<
+        'plugin::auto-locales-slug.auto-locales-slug',
+        {
+          pattern: 'name';
+        }
+      >;
+    view_360: Schema.Attribute.Boolean;
+    view_360_url: Schema.Attribute.String;
+  };
+}
+
+export interface RoomsSpecs extends Struct.ComponentSchema {
+  collectionName: 'components_rooms_specs';
+  info: {
+    displayName: 'specs';
+    icon: 'bulletList';
+  };
+  attributes: {
+    area_balcony_m2: Schema.Attribute.Integer;
+    area_balcony_sq_ft: Schema.Attribute.Integer;
+    area_m2: Schema.Attribute.Integer;
+    area_sq_ft: Schema.Attribute.Integer;
+    bedding: Schema.Attribute.String;
+    has_balcony: Schema.Attribute.Boolean;
+    has_sofa_bed: Schema.Attribute.Boolean;
+    pet_allowed: Schema.Attribute.Boolean;
+    pet_extra_cost: Schema.Attribute.Boolean;
+    pet_max_weight_kg: Schema.Attribute.Integer;
+    pet_max_weight_lbs: Schema.Attribute.Integer;
+    pets_allowed: Schema.Attribute.Integer;
+    sofa_bed_type: Schema.Attribute.String;
+    view: Schema.Attribute.String;
+  };
+}
+
 export interface SharedBadge extends Struct.ComponentSchema {
   collectionName: 'components_shared_badges';
   info: {
@@ -429,6 +486,85 @@ export interface SharedSocialMedia extends Struct.ComponentSchema {
   };
 }
 
+export interface SimpleComponentsLink extends Struct.ComponentSchema {
+  collectionName: 'components_simple_components_links';
+  info: {
+    displayName: 'link';
+    icon: 'link';
+  };
+  attributes: {
+    href: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media<'images'>;
+    label: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
+    target: Schema.Attribute.Enumeration<
+      ['_self', '_blank', '_parent', '_top']
+    >;
+  };
+}
+
+export interface SimpleComponentsLinkTree extends Struct.ComponentSchema {
+  collectionName: 'components_simple_components_link_trees';
+  info: {
+    displayName: 'link_tree';
+    icon: 'bulletList';
+  };
+  attributes: {
+    column: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    link: Schema.Attribute.Component<'simple-components.link', true>;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SimpleComponentsMedia extends Struct.ComponentSchema {
+  collectionName: 'components_simple_components_media';
+  info: {
+    displayName: 'media';
+    icon: 'picture';
+  };
+  attributes: {
+    media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SimpleComponentsSeparator extends Struct.ComponentSchema {
+  collectionName: 'components_simple_components_separators';
+  info: {
+    displayName: 'separator';
+  };
+  attributes: {
+    active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -437,6 +573,8 @@ declare module '@strapi/strapi' {
       'mailing.header': MailingHeader;
       'plans.benefit': PlansBenefit;
       'plans.feature': PlansFeature;
+      'rooms.room-card': RoomsRoomCard;
+      'rooms.specs': RoomsSpecs;
       'shared.badge': SharedBadge;
       'shared.buttons': SharedButtons;
       'shared.card': SharedCard;
@@ -453,6 +591,10 @@ declare module '@strapi/strapi' {
       'shared.show-contact': SharedShowContact;
       'shared.slider': SharedSlider;
       'shared.social-media': SharedSocialMedia;
+      'simple-components.link': SimpleComponentsLink;
+      'simple-components.link-tree': SimpleComponentsLinkTree;
+      'simple-components.media': SimpleComponentsMedia;
+      'simple-components.separator': SimpleComponentsSeparator;
     }
   }
 }

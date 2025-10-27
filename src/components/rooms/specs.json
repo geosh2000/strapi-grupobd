@@ -1,0 +1,123 @@
+{
+  "collectionName": "components_rooms_specs",
+  "info": {
+    "displayName": "specs",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "area_m2": {
+      "type": "integer"
+    },
+    "area_sq_ft": {
+      "type": "integer"
+    },
+    "has_balcony": {
+      "type": "boolean"
+    },
+    "area_balcony_m2": {
+      "type": "integer",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_balcony"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "area_balcony_sq_ft": {
+      "type": "integer",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_balcony"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "view": {
+      "type": "string"
+    },
+    "bedding": {
+      "type": "string"
+    },
+    "has_sofa_bed": {
+      "type": "boolean"
+    },
+    "sofa_bed_type": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_sofa_bed"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "pet_allowed": {
+      "type": "boolean"
+    },
+    "pet_extra_cost": {
+      "type": "boolean",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "pet_allowed"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "pets_allowed": {
+      "type": "integer",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "pet_allowed"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "pet_max_weight_kg": {
+      "type": "integer",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "pet_allowed"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "pet_max_weight_lbs": {
+      "type": "integer",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "pet_allowed"
+            },
+            true
+          ]
+        }
+      }
+    }
+  },
+  "config": {}
+}

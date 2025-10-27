@@ -1,0 +1,97 @@
+{
+    "kind": "collectionType",
+    "collectionName": "navbars",
+    "info": {
+        "singularName": "navbar",
+        "pluralName": "navbars",
+        "displayName": "navbar"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "site": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::site.site",
+            "inversedBy": "navbar"
+        },
+        "name": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "logo": {
+            "type": "media",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "multiple": false,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "title": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "position": {
+            "type": "enumeration",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            },
+            "default": "top",
+            "enum": [
+                "top",
+                "bottom",
+                "left",
+                "right"
+            ]
+        },
+        "select_lang": {
+            "type": "boolean",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            },
+            "default": true
+        },
+        "cta": {
+            "type": "component",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "component": "shared.buttons",
+            "repeatable": false
+        },
+        "links": {
+            "type": "component",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "component": "simple-components.link",
+            "repeatable": true
+        }
+    }
+}

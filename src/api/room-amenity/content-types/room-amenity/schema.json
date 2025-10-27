@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "room_amenities",
+  "info": {
+    "singularName": "room-amenity",
+    "pluralName": "room-amenities",
+    "displayName": "room_amenity"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Amenity": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

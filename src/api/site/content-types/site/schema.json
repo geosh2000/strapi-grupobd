@@ -34,6 +34,11 @@
     "privacy_policy_es": {
       "type": "string"
     },
+    "contact_fields": {
+      "type": "component",
+      "component": "shared.contact",
+      "repeatable": false
+    },
     "pages": {
       "type": "relation",
       "relation": "oneToMany",
@@ -45,18 +50,6 @@
       "relation": "oneToMany",
       "target": "api::faq.faq",
       "mappedBy": "site"
-    },
-    "contact_fields": {
-      "type": "component",
-      "component": "shared.contact",
-      "repeatable": false
-    },
-    "global_css": {
-      "type": "customField",
-      "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
-      "options": {
-        "language": "css"
-      }
     },
     "mail": {
       "type": "relation",
@@ -80,6 +73,37 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::plan-pivot.plan-pivot",
+      "mappedBy": "site"
+    },
+    "global_css": {
+      "type": "customField",
+      "customField": "plugin::strapi-code-editor-custom-field.code-editor-text",
+      "options": {
+        "language": "css"
+      }
+    },
+    "navbar": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::navbar.navbar",
+      "mappedBy": "site"
+    },
+    "footer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::footer.footer",
+      "mappedBy": "site"
+    },
+    "header": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::header.header",
+      "mappedBy": "site"
+    },
+    "page_news": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page-new.page-new",
       "mappedBy": "site"
     }
   }

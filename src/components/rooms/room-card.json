@@ -1,0 +1,71 @@
+{
+  "collectionName": "components_rooms_room_cards",
+  "info": {
+    "displayName": "room-card",
+    "icon": "stack"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "customField",
+      "customField": "plugin::auto-locales-slug.auto-locales-slug",
+      "required": true,
+      "options": {
+        "pattern": "name"
+      }
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "short_description": {
+      "type": "blocks"
+    },
+    "main_picture": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "carrousel": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "view_360": {
+      "type": "boolean"
+    },
+    "view_360_url": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "view_360"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "room_specs": {
+      "type": "component",
+      "component": "rooms.specs",
+      "repeatable": false
+    },
+    "room_amenities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::room-amenity.room-amenity"
+    }
+  },
+  "config": {}
+}

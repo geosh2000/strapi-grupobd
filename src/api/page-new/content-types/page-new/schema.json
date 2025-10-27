@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "pages",
+  "collectionName": "page_news",
   "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "page"
+    "singularName": "page-new",
+    "pluralName": "page-news",
+    "displayName": "page_new"
   },
   "options": {
     "draftAndPublish": true
@@ -19,7 +19,7 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::site.site",
-      "inversedBy": "pages"
+      "inversedBy": "page_news"
     },
     "category": {
       "type": "string",
@@ -60,7 +60,7 @@
       },
       "required": true
     },
-    "page_structure": {
+    "content": {
       "type": "dynamiczone",
       "pluginOptions": {
         "i18n": {
@@ -68,16 +68,7 @@
         }
       },
       "components": [
-        "shared.show-contact",
-        "shared.rich-text",
-        "shared.plain-text",
-        "shared.media",
-        "shared.input",
-        "shared.html",
-        "shared.contact",
-        "shared.card",
-        "shared.buttons",
-        "shared.badge"
+        "rooms.room-card"
       ]
     },
     "seo": {

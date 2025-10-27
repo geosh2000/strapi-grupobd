@@ -1,0 +1,131 @@
+{
+    "kind": "collectionType",
+    "collectionName": "footers",
+    "info": {
+        "singularName": "footer",
+        "pluralName": "footers",
+        "displayName": "footer"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "site": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::site.site",
+            "inversedBy": "footer"
+        },
+        "name": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            }
+        },
+        "slug": {
+            "type": "customField",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "customField": "plugin::auto-locales-slug.auto-locales-slug",
+            "required": true,
+            "options": {
+                "pattern": "name"
+            }
+        },
+        "show_affiliations": {
+            "type": "boolean",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            },
+            "default": true
+        },
+        "affiliations": {
+            "type": "dynamiczone",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "components": [
+                "simple-components.media",
+                "simple-components.separator"
+            ]
+        },
+        "show_site_map": {
+            "type": "boolean",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            },
+            "default": true
+        },
+        "site_map": {
+            "type": "component",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "show_site_map"
+                        },
+                        true
+                    ]
+                }
+            },
+            "component": "simple-components.link-tree",
+            "repeatable": true
+        },
+        "show_extra_text": {
+            "type": "boolean",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            },
+            "default": false
+        },
+        "extra_text": {
+            "type": "blocks",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "show_extra_text"
+                        },
+                        true
+                    ]
+                }
+            }
+        },
+        "copyright": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        }
+    }
+}
