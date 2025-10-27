@@ -825,12 +825,7 @@ export interface ApiNavbarNavbar extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    links: Schema.Attribute.Component<'simple-components.link', true> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    links: Schema.Attribute.Relation<'oneToMany', 'api::link.link'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::navbar.navbar'>;
     logo: Schema.Attribute.Media<'images'> &
