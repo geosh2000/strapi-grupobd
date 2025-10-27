@@ -24,6 +24,12 @@
       },
       "component": "simple-components.link",
       "repeatable": false
+    },
+    "site": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site.site",
+      "inversedBy": "links"
     }
   }
 }

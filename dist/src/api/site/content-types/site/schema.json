@@ -105,6 +105,12 @@
             "relation": "oneToMany",
             "target": "api::page-new.page-new",
             "mappedBy": "site"
+        },
+        "links": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::link.link",
+            "mappedBy": "site"
         }
     }
 }

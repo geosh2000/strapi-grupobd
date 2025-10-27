@@ -695,6 +695,7 @@ export interface ApiLinkLink extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::link.link'>;
     publishedAt: Schema.Attribute.DateTime;
+    site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1232,6 +1233,7 @@ export interface ApiSiteSite extends Struct.CollectionTypeSchema {
         }
       >;
     header: Schema.Attribute.Relation<'oneToOne', 'api::header.header'>;
+    links: Schema.Attribute.Relation<'oneToMany', 'api::link.link'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::site.site'> &
       Schema.Attribute.Private;
