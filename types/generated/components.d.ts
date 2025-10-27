@@ -517,7 +517,7 @@ export interface SimpleComponentsLinkTree extends Struct.ComponentSchema {
         },
         number
       >;
-    link: Schema.Attribute.Component<'simple-components.link', true>;
+    links: Schema.Attribute.Relation<'oneToMany', 'api::link.link'>;
     order: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
         {

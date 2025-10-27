@@ -631,12 +631,7 @@ export interface ApiHeaderHeader extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    links: Schema.Attribute.Component<'simple-components.link', true> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    links: Schema.Attribute.Relation<'oneToMany', 'api::link.link'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::header.header'>;
     logo: Schema.Attribute.Media<'images'> &
@@ -666,6 +661,40 @@ export interface ApiHeaderHeader extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLinkLink extends Struct.CollectionTypeSchema {
+  collectionName: 'links';
+  info: {
+    displayName: 'link';
+    pluralName: 'links';
+    singularName: 'link';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    link: Schema.Attribute.Component<'simple-components.link', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::link.link'>;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1747,6 +1776,7 @@ declare module '@strapi/strapi' {
       'api::feature.feature': ApiFeatureFeature;
       'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
+      'api::link.link': ApiLinkLink;
       'api::mail.mail': ApiMailMail;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::page-new.page-new': ApiPageNewPageNew;

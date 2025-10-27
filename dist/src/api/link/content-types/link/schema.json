@@ -1,0 +1,29 @@
+{
+    "kind": "collectionType",
+    "collectionName": "links",
+    "info": {
+        "singularName": "link",
+        "pluralName": "links",
+        "displayName": "link"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "link": {
+            "type": "component",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "component": "simple-components.link",
+            "repeatable": false
+        }
+    }
+}

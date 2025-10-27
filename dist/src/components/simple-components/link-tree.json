@@ -17,10 +17,10 @@
             "type": "integer",
             "min": 0
         },
-        "link": {
-            "type": "component",
-            "component": "simple-components.link",
-            "repeatable": true
+        "links": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::link.link"
         }
     },
     "config": {}
