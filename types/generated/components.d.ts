@@ -481,6 +481,14 @@ export interface SharedSocialMedia extends Struct.ComponentSchema {
     name: Schema.Attribute.String;
     section: Schema.Attribute.String;
     sort: Schema.Attribute.Integer;
+    svg: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-plugin-iconhub.iconhub',
+        {
+          storeIconData: true;
+          storeIconName: true;
+        }
+      >;
     type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'socialMedia'>;
     url: Schema.Attribute.String;
   };

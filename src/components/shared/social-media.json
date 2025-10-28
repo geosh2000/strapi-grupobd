@@ -25,6 +25,14 @@
         "audios"
       ]
     },
+    "svg": {
+      "type": "customField",
+      "customField": "plugin::strapi-plugin-iconhub.iconhub",
+      "options": {
+        "storeIconData": true,
+        "storeIconName": true
+      }
+    },
     "altText": {
       "type": "string"
     },

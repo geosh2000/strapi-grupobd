@@ -16,6 +16,7 @@
     "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
+    "@arshiash80/strapi-plugin-iconhub": "^1.1.1",
     "@strapi/plugin-cloud": "5.29.0",
     "@strapi/plugin-color-picker": "^5.23.0",
     "@strapi/plugin-graphql": "^5.23.0",
