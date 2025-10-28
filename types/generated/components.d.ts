@@ -518,7 +518,8 @@ export interface SimpleComponentsContactTree extends Struct.ComponentSchema {
   };
   attributes: {
     contact: Schema.Attribute.Component<'shared.contact', false>;
-    info: Schema.Attribute.Component<'simple-components.column', false>;
+    info: Schema.Attribute.Component<'simple-components.column', false> &
+      Schema.Attribute.Required;
   };
 }
 
@@ -546,7 +547,8 @@ export interface SimpleComponentsLinkTree extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
-    info: Schema.Attribute.Component<'simple-components.column', false>;
+    info: Schema.Attribute.Component<'simple-components.column', false> &
+      Schema.Attribute.Required;
     links: Schema.Attribute.Relation<'oneToMany', 'api::link.link'>;
   };
 }
@@ -593,7 +595,8 @@ export interface SimpleComponentsSocialTree extends Struct.ComponentSchema {
     displayName: 'social_tree';
   };
   attributes: {
-    info: Schema.Attribute.Component<'simple-components.column', false>;
+    info: Schema.Attribute.Component<'simple-components.column', false> &
+      Schema.Attribute.Required;
     social_media: Schema.Attribute.Component<'shared.social-media', true>;
   };
 }
@@ -604,7 +607,8 @@ export interface SimpleComponentsTextTree extends Struct.ComponentSchema {
     displayName: 'text_tree';
   };
   attributes: {
-    info: Schema.Attribute.Component<'simple-components.column', false>;
+    info: Schema.Attribute.Component<'simple-components.column', false> &
+      Schema.Attribute.Required;
     text: Schema.Attribute.Blocks;
   };
 }

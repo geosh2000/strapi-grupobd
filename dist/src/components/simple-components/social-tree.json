@@ -8,7 +8,8 @@
         "info": {
             "type": "component",
             "component": "simple-components.column",
-            "repeatable": false
+            "repeatable": false,
+            "required": true
         },
         "social_media": {
             "type": "component",
