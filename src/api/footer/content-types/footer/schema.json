@@ -82,6 +82,30 @@
       },
       "default": true
     },
+    "site_map": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "show_site_map"
+            },
+            true
+          ]
+        }
+      },
+      "components": [
+        "simple-components.text-tree",
+        "simple-components.social-tree",
+        "simple-components.link-tree",
+        "simple-components.contact-tree"
+      ]
+    },
     "show_extra_text": {
       "type": "boolean",
       "pluginOptions": {
