@@ -14,7 +14,8 @@
     "contact": {
       "type": "component",
       "component": "shared.contact",
-      "repeatable": false
+      "repeatable": false,
+      "required": true
     }
   },
   "config": {}

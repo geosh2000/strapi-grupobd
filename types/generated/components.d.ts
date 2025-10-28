@@ -478,6 +478,8 @@ export interface SharedSocialMedia extends Struct.ComponentSchema {
         }
       >;
     icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    icon_type: Schema.Attribute.Enumeration<['image', 'svg']>;
+    in_section: Schema.Attribute.Boolean;
     name: Schema.Attribute.String;
     section: Schema.Attribute.String;
     sort: Schema.Attribute.Integer;
@@ -525,7 +527,8 @@ export interface SimpleComponentsContactTree extends Struct.ComponentSchema {
     displayName: 'contact_tree';
   };
   attributes: {
-    contact: Schema.Attribute.Component<'shared.contact', false>;
+    contact: Schema.Attribute.Component<'shared.contact', false> &
+      Schema.Attribute.Required;
     info: Schema.Attribute.Component<'simple-components.column', false> &
       Schema.Attribute.Required;
   };

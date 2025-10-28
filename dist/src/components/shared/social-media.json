@@ -9,14 +9,34 @@
         "name": {
             "type": "string"
         },
+        "in_section": {
+            "type": "boolean"
+        },
         "section": {
             "type": "string"
         },
         "sort": {
             "type": "integer"
         },
+        "icon_type": {
+            "type": "enumeration",
+            "enum": [
+                "image",
+                "svg"
+            ]
+        },
         "icon": {
             "type": "media",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "icon_type"
+                        },
+                        "image"
+                    ]
+                }
+            },
             "multiple": false,
             "allowedTypes": [
                 "images",
@@ -27,6 +47,16 @@
         },
         "svg": {
             "type": "customField",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "icon_type"
+                        },
+                        "svg"
+                    ]
+                }
+            },
             "customField": "plugin::strapi-plugin-iconhub.iconhub",
             "options": {
                 "storeIconData": true,
