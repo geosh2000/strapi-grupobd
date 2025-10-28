@@ -58,6 +58,16 @@
                     "localized": true
                 }
             },
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "show_affiliations"
+                        },
+                        true
+                    ]
+                }
+            },
             "components": [
                 "simple-components.media",
                 "simple-components.separator"
@@ -71,26 +81,6 @@
                 }
             },
             "default": true
-        },
-        "site_map": {
-            "type": "component",
-            "pluginOptions": {
-                "i18n": {
-                    "localized": true
-                }
-            },
-            "conditions": {
-                "visible": {
-                    "==": [
-                        {
-                            "var": "show_site_map"
-                        },
-                        true
-                    ]
-                }
-            },
-            "component": "simple-components.link-tree",
-            "repeatable": true
         },
         "show_extra_text": {
             "type": "boolean",

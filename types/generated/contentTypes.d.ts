@@ -587,12 +587,6 @@ export interface ApiFooterFooter extends Struct.CollectionTypeSchema {
       }> &
       Schema.Attribute.DefaultTo<true>;
     site: Schema.Attribute.Relation<'oneToOne', 'api::site.site'>;
-    site_map: Schema.Attribute.Component<'simple-components.link-tree', true> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<

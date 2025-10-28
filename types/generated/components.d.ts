@@ -486,6 +486,42 @@ export interface SharedSocialMedia extends Struct.ComponentSchema {
   };
 }
 
+export interface SimpleComponentsColumn extends Struct.ComponentSchema {
+  collectionName: 'components_simple_components_columns';
+  info: {
+    displayName: 'column';
+    icon: 'layer';
+  };
+  attributes: {
+    column: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SimpleComponentsContactTree extends Struct.ComponentSchema {
+  collectionName: 'components_simple_components_contact_trees';
+  info: {
+    displayName: 'contact_tree';
+  };
+  attributes: {
+    contact: Schema.Attribute.Component<'shared.contact', false>;
+    info: Schema.Attribute.Component<'simple-components.column', false>;
+  };
+}
+
 export interface SimpleComponentsLink extends Struct.ComponentSchema {
   collectionName: 'components_simple_components_links';
   info: {
@@ -510,22 +546,8 @@ export interface SimpleComponentsLinkTree extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
-    column: Schema.Attribute.Integer &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
+    info: Schema.Attribute.Component<'simple-components.column', false>;
     links: Schema.Attribute.Relation<'oneToMany', 'api::link.link'>;
-    order: Schema.Attribute.Integer &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
-    title: Schema.Attribute.String;
   };
 }
 
@@ -565,6 +587,28 @@ export interface SimpleComponentsSeparator extends Struct.ComponentSchema {
   };
 }
 
+export interface SimpleComponentsSocialTree extends Struct.ComponentSchema {
+  collectionName: 'components_simple_components_social_trees';
+  info: {
+    displayName: 'social_tree';
+  };
+  attributes: {
+    info: Schema.Attribute.Component<'simple-components.column', false>;
+    social_media: Schema.Attribute.Component<'shared.social-media', true>;
+  };
+}
+
+export interface SimpleComponentsTextTree extends Struct.ComponentSchema {
+  collectionName: 'components_simple_components_text_trees';
+  info: {
+    displayName: 'text_tree';
+  };
+  attributes: {
+    info: Schema.Attribute.Component<'simple-components.column', false>;
+    text: Schema.Attribute.Blocks;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -591,10 +635,14 @@ declare module '@strapi/strapi' {
       'shared.show-contact': SharedShowContact;
       'shared.slider': SharedSlider;
       'shared.social-media': SharedSocialMedia;
+      'simple-components.column': SimpleComponentsColumn;
+      'simple-components.contact-tree': SimpleComponentsContactTree;
       'simple-components.link': SimpleComponentsLink;
       'simple-components.link-tree': SimpleComponentsLinkTree;
       'simple-components.media': SimpleComponentsMedia;
       'simple-components.separator': SimpleComponentsSeparator;
+      'simple-components.social-tree': SimpleComponentsSocialTree;
+      'simple-components.text-tree': SimpleComponentsTextTree;
     }
   }
 }

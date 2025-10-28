@@ -1,0 +1,20 @@
+{
+    "collectionName": "components_simple_components_social_trees",
+    "info": {
+        "displayName": "social_tree"
+    },
+    "options": {},
+    "attributes": {
+        "info": {
+            "type": "component",
+            "component": "simple-components.column",
+            "repeatable": false
+        },
+        "social_media": {
+            "type": "component",
+            "component": "shared.social-media",
+            "repeatable": true
+        }
+    },
+    "config": {}
+}

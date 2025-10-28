@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_simple_components_columns",
+  "info": {
+    "displayName": "column",
+    "icon": "layer"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "column": {
+      "type": "integer",
+      "min": 0
+    },
+    "order": {
+      "type": "integer",
+      "min": 0
+    }
+  },
+  "config": {}
+}

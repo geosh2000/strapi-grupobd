@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_simple_components_text_trees",
+  "info": {
+    "displayName": "text_tree"
+  },
+  "options": {},
+  "attributes": {
+    "info": {
+      "type": "component",
+      "component": "simple-components.column",
+      "repeatable": false
+    },
+    "text": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}
