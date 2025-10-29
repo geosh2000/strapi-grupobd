@@ -17,9 +17,9 @@
   "attributes": {
     "site": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::site.site",
-      "inversedBy": "navbar"
+      "inversedBy": "navbars"
     },
     "name": {
       "type": "string",

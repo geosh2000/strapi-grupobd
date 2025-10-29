@@ -586,7 +586,7 @@ export interface ApiFooterFooter extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<true>;
-    site: Schema.Attribute.Relation<'oneToOne', 'api::site.site'>;
+    site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
     site_map: Schema.Attribute.DynamicZone<
       [
         'simple-components.text-tree',
@@ -654,7 +654,7 @@ export interface ApiHeaderHeader extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    site: Schema.Attribute.Relation<'oneToOne', 'api::site.site'>;
+    site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<
@@ -869,7 +869,7 @@ export interface ApiNavbarNavbar extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<true>;
-    site: Schema.Attribute.Relation<'oneToOne', 'api::site.site'>;
+    site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1237,7 +1237,7 @@ export interface ApiSiteSite extends Struct.CollectionTypeSchema {
     domain_us: Schema.Attribute.String & Schema.Attribute.Required;
     faqs: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'>;
     features: Schema.Attribute.Relation<'oneToMany', 'api::feature.feature'>;
-    footer: Schema.Attribute.Relation<'oneToOne', 'api::footer.footer'>;
+    footers: Schema.Attribute.Relation<'oneToMany', 'api::footer.footer'>;
     global_css: Schema.Attribute.Text &
       Schema.Attribute.CustomField<
         'plugin::strapi-code-editor-custom-field.code-editor-text',
@@ -1245,7 +1245,7 @@ export interface ApiSiteSite extends Struct.CollectionTypeSchema {
           language: 'css';
         }
       >;
-    header: Schema.Attribute.Relation<'oneToOne', 'api::header.header'>;
+    headers: Schema.Attribute.Relation<'oneToMany', 'api::header.header'>;
     links: Schema.Attribute.Relation<'oneToMany', 'api::link.link'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::site.site'> &
@@ -1254,7 +1254,7 @@ export interface ApiSiteSite extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    navbar: Schema.Attribute.Relation<'oneToOne', 'api::navbar.navbar'>;
+    navbars: Schema.Attribute.Relation<'oneToMany', 'api::navbar.navbar'>;
     page_news: Schema.Attribute.Relation<'oneToMany', 'api::page-new.page-new'>;
     pages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>;
     plan_pivot: Schema.Attribute.Relation<

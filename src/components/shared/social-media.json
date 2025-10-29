@@ -13,10 +13,30 @@
       "type": "boolean"
     },
     "section": {
-      "type": "string"
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "in_section"
+            },
+            true
+          ]
+        }
+      }
     },
     "sort": {
-      "type": "integer"
+      "type": "integer",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "in_section"
+            },
+            true
+          ]
+        }
+      }
     },
     "icon_type": {
       "type": "enumeration",

@@ -82,21 +82,21 @@
                 "language": "css"
             }
         },
-        "navbar": {
+        "navbars": {
             "type": "relation",
-            "relation": "oneToOne",
+            "relation": "oneToMany",
             "target": "api::navbar.navbar",
             "mappedBy": "site"
         },
-        "footer": {
+        "footers": {
             "type": "relation",
-            "relation": "oneToOne",
+            "relation": "oneToMany",
             "target": "api::footer.footer",
             "mappedBy": "site"
         },
-        "header": {
+        "headers": {
             "type": "relation",
-            "relation": "oneToOne",
+            "relation": "oneToMany",
             "target": "api::header.header",
             "mappedBy": "site"
         },
