@@ -12,7 +12,7 @@
       "required": true
     },
     "text": {
-      "type": "blocks"
+      "type": "richtext"
     }
   },
   "config": {}

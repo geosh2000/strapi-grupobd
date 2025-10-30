@@ -620,7 +620,7 @@ export interface SimpleComponentsTextTree extends Struct.ComponentSchema {
   attributes: {
     info: Schema.Attribute.Component<'simple-components.column', false> &
       Schema.Attribute.Required;
-    text: Schema.Attribute.Blocks;
+    text: Schema.Attribute.RichText;
   };
 }
 
