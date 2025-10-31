@@ -1,0 +1,164 @@
+{
+    "kind": "collectionType",
+    "collectionName": "contact_infos",
+    "info": {
+        "singularName": "contact-info",
+        "pluralName": "contact-infos",
+        "displayName": "contact_info"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "site": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::site.site",
+            "inversedBy": "contact_info"
+        },
+        "name": {
+            "type": "string"
+        },
+        "has_phone_mx": {
+            "type": "boolean",
+            "default": false
+        },
+        "phone_mx": {
+            "type": "string",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "has_phone_mx"
+                        },
+                        true
+                    ]
+                }
+            }
+        },
+        "phone_mx_icon": {
+            "type": "customField",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "has_phone_mx"
+                        },
+                        true
+                    ]
+                }
+            },
+            "customField": "plugin::strapi-plugin-iconhub.iconhub",
+            "options": {
+                "storeIconData": true,
+                "storeIconName": true
+            }
+        },
+        "has_phone_us": {
+            "type": "boolean",
+            "default": false
+        },
+        "phone_us": {
+            "type": "string",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "has_phone_us"
+                        },
+                        true
+                    ]
+                }
+            }
+        },
+        "phone_us_icon": {
+            "type": "customField",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "has_phone_us"
+                        },
+                        true
+                    ]
+                }
+            },
+            "customField": "plugin::strapi-plugin-iconhub.iconhub",
+            "options": {
+                "storeIconData": true,
+                "storeIconName": true
+            }
+        },
+        "has_phone_rest": {
+            "type": "boolean",
+            "default": false
+        },
+        "phone_rest": {
+            "type": "string",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "has_phone_rest"
+                        },
+                        true
+                    ]
+                }
+            }
+        },
+        "phone_rest_icon": {
+            "type": "customField",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "has_phone_rest"
+                        },
+                        true
+                    ]
+                }
+            },
+            "customField": "plugin::strapi-plugin-iconhub.iconhub",
+            "options": {
+                "storeIconData": true,
+                "storeIconName": true
+            }
+        },
+        "has_email": {
+            "type": "boolean",
+            "default": false
+        },
+        "email": {
+            "type": "string",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "has_email"
+                        },
+                        true
+                    ]
+                }
+            }
+        },
+        "email_icon": {
+            "type": "customField",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "has_email"
+                        },
+                        true
+                    ]
+                }
+            },
+            "customField": "plugin::strapi-plugin-iconhub.iconhub",
+            "options": {
+                "storeIconData": true,
+                "storeIconName": true
+            }
+        }
+    }
+}
