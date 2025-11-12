@@ -77,7 +77,9 @@
       "components": [
         "rooms.room-card",
         "sections.hero",
-        "sections.cards"
+        "sections.cards",
+        "sections.thankyou",
+        "sections.contact"
       ]
     },
     "visual_setup": {

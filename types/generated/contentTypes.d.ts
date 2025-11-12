@@ -1069,7 +1069,13 @@ export interface ApiPageSectionPageSection extends Struct.CollectionTypeSchema {
       }> &
       Schema.Attribute.DefaultTo<true>;
     content: Schema.Attribute.DynamicZone<
-      ['rooms.room-card', 'sections.hero', 'sections.cards']
+      [
+        'rooms.room-card',
+        'sections.hero',
+        'sections.cards',
+        'sections.thankyou',
+        'sections.contact',
+      ]
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
