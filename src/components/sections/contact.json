@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_sections_contacts",
+  "info": {
+    "displayName": "contact"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "component",
+      "component": "shared.title-subtitle-description",
+      "repeatable": false
+    },
+    "image": {
+      "type": "component",
+      "component": "simple-components.media",
+      "repeatable": false
+    },
+    "show_phone_us": {
+      "type": "boolean"
+    },
+    "show_phone_mx": {
+      "type": "boolean"
+    },
+    "show_phone_rest": {
+      "type": "boolean"
+    },
+    "show_mail": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

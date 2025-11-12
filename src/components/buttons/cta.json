@@ -1,0 +1,124 @@
+{
+  "collectionName": "components_buttons_ctas",
+  "info": {
+    "displayName": "cta"
+  },
+  "options": {},
+  "attributes": {
+    "has_primary_cta": {
+      "type": "boolean"
+    },
+    "primary_cta_type": {
+      "type": "enumeration",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_primary_cta"
+            },
+            true
+          ]
+        }
+      },
+      "enum": [
+        "link",
+        "section",
+        "slug"
+      ]
+    },
+    "primary_cta_link": {
+      "type": "text",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_primary_cta"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "primary_cta_style": {
+      "type": "enumeration",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_primary_cta"
+            },
+            true
+          ]
+        }
+      },
+      "enum": [
+        "solid",
+        "outline",
+        "link"
+      ]
+    },
+    "has_secondary_cta": {
+      "type": "boolean",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_primary_cta"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "secondary_cta_type": {
+      "type": "enumeration",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_secondary_cta"
+            },
+            true
+          ]
+        }
+      },
+      "enum": [
+        "link",
+        "section",
+        "slug"
+      ]
+    },
+    "secondary_cta_link": {
+      "type": "text",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_secondary_cta"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "secondary_cta_style": {
+      "type": "enumeration",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_secondary_cta"
+            },
+            true
+          ]
+        }
+      },
+      "enum": [
+        "solid",
+        "outline",
+        "link"
+      ]
+    }
+  },
+  "config": {}
+}

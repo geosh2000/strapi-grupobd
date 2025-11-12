@@ -1,5 +1,51 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ButtonsCta extends Struct.ComponentSchema {
+  collectionName: 'components_buttons_ctas';
+  info: {
+    displayName: 'cta';
+  };
+  attributes: {
+    has_primary_cta: Schema.Attribute.Boolean;
+    has_secondary_cta: Schema.Attribute.Boolean;
+    primary_cta_link: Schema.Attribute.Text;
+    primary_cta_style: Schema.Attribute.Enumeration<
+      ['solid', 'outline', 'link']
+    >;
+    primary_cta_type: Schema.Attribute.Enumeration<['link', 'section', 'slug']>;
+    secondary_cta_link: Schema.Attribute.Text;
+    secondary_cta_style: Schema.Attribute.Enumeration<
+      ['solid', 'outline', 'link']
+    >;
+    secondary_cta_type: Schema.Attribute.Enumeration<
+      ['link', 'section', 'slug']
+    >;
+  };
+}
+
+export interface DesignVisualSetup extends Struct.ComponentSchema {
+  collectionName: 'components_design_visual_setups';
+  info: {
+    displayName: 'visual_setup';
+  };
+  attributes: {
+    content_alignment: Schema.Attribute.Enumeration<
+      ['left', 'center', 'right']
+    >;
+    custom_text_color: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
+    layout_variant: Schema.Attribute.Enumeration<
+      ['full-screen', 'half', 'contained', 'split', 'minimal']
+    >;
+    show_scroll_indicator: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    text_color_theme: Schema.Attribute.Enumeration<['light', 'dark', 'custom']>;
+    vertical_alignment: Schema.Attribute.Enumeration<
+      ['top', 'center', 'bottom']
+    >;
+  };
+}
+
 export interface FaqFaq extends Struct.ComponentSchema {
   collectionName: 'components_faq_faqs';
   info: {
@@ -33,6 +79,31 @@ export interface MailingHeader extends Struct.ComponentSchema {
       Schema.Attribute.CustomField<'plugin::color-picker.color'>;
     image: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface MediaBackgroundMedia extends Struct.ComponentSchema {
+  collectionName: 'components_media_background_medias';
+  info: {
+    displayName: 'background_media';
+  };
+  attributes: {
+    backgroud_image: Schema.Attribute.Media<'images'>;
+    background_color: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
+    background_type: Schema.Attribute.Enumeration<['none', 'image', 'video']>;
+    background_video: Schema.Attribute.Media<'videos'>;
+    overlay_color: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
+    overlay_enabled: Schema.Attribute.Boolean;
+    overlay_opacity: Schema.Attribute.Decimal &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 1;
+          min: 0;
+        },
+        number
+      >;
   };
 }
 
@@ -114,6 +185,68 @@ export interface RoomsSpecs extends Struct.ComponentSchema {
     pets_allowed: Schema.Attribute.Integer;
     sofa_bed_type: Schema.Attribute.String;
     view: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsCards extends Struct.ComponentSchema {
+  collectionName: 'components_sections_cards';
+  info: {
+    displayName: 'Cards';
+  };
+  attributes: {
+    card: Schema.Attribute.Component<'shared.single-card', true>;
+    content: Schema.Attribute.Component<
+      'shared.title-subtitle-description',
+      false
+    >;
+  };
+}
+
+export interface SectionsContact extends Struct.ComponentSchema {
+  collectionName: 'components_sections_contacts';
+  info: {
+    displayName: 'contact';
+  };
+  attributes: {
+    content: Schema.Attribute.Component<
+      'shared.title-subtitle-description',
+      false
+    >;
+    image: Schema.Attribute.Component<'simple-components.media', false>;
+    show_mail: Schema.Attribute.Boolean;
+    show_phone_mx: Schema.Attribute.Boolean;
+    show_phone_rest: Schema.Attribute.Boolean;
+    show_phone_us: Schema.Attribute.Boolean;
+  };
+}
+
+export interface SectionsHero extends Struct.ComponentSchema {
+  collectionName: 'components_sections_heroes';
+  info: {
+    displayName: 'Hero';
+  };
+  attributes: {
+    background: Schema.Attribute.Component<'media.background-media', false>;
+    content: Schema.Attribute.Component<
+      'shared.title-subtitle-description',
+      false
+    >;
+    cta: Schema.Attribute.Component<'buttons.cta', false>;
+    id_anchor: Schema.Attribute.String;
+    tagline: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsThankyou extends Struct.ComponentSchema {
+  collectionName: 'components_sections_thankyous';
+  info: {
+    displayName: 'thankyou';
+  };
+  attributes: {
+    content: Schema.Attribute.Component<
+      'shared.title-subtitle-description',
+      false
+    >;
   };
 }
 
@@ -449,6 +582,44 @@ export interface SharedShowContact extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSingleCard extends Struct.ComponentSchema {
+  collectionName: 'components_shared_single_cards';
+  info: {
+    displayName: 'single_card';
+  };
+  attributes: {
+    background_color: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
+    card_icon: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-plugin-iconhub.iconhub',
+        {
+          storeIconData: true;
+          storeIconName: true;
+        }
+      >;
+    card_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    card_video: Schema.Attribute.Media<'videos'>;
+    content: Schema.Attribute.Component<
+      'shared.title-subtitle-description',
+      true
+    >;
+    cta: Schema.Attribute.Component<'buttons.cta', false>;
+    has_cta: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    has_media: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    media_type: Schema.Attribute.Enumeration<['icon', 'image', 'video']>;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+  };
+}
+
 export interface SharedSlider extends Struct.ComponentSchema {
   collectionName: 'components_shared_sliders';
   info: {
@@ -493,6 +664,18 @@ export interface SharedSocialMedia extends Struct.ComponentSchema {
       >;
     type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'socialMedia'>;
     url: Schema.Attribute.String;
+  };
+}
+
+export interface SharedTitleSubtitleDescription extends Struct.ComponentSchema {
+  collectionName: 'components_shared_title_subtitle_descriptions';
+  info: {
+    displayName: 'title_subtitle_description';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    subtitle: Schema.Attribute.RichText;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -627,13 +810,20 @@ export interface SimpleComponentsTextTree extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'buttons.cta': ButtonsCta;
+      'design.visual-setup': DesignVisualSetup;
       'faq.faq': FaqFaq;
       'mailing.footer': MailingFooter;
       'mailing.header': MailingHeader;
+      'media.background-media': MediaBackgroundMedia;
       'plans.benefit': PlansBenefit;
       'plans.feature': PlansFeature;
       'rooms.room-card': RoomsRoomCard;
       'rooms.specs': RoomsSpecs;
+      'sections.cards': SectionsCards;
+      'sections.contact': SectionsContact;
+      'sections.hero': SectionsHero;
+      'sections.thankyou': SectionsThankyou;
       'shared.badge': SharedBadge;
       'shared.buttons': SharedButtons;
       'shared.card': SharedCard;
@@ -648,8 +838,10 @@ declare module '@strapi/strapi' {
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.show-contact': SharedShowContact;
+      'shared.single-card': SharedSingleCard;
       'shared.slider': SharedSlider;
       'shared.social-media': SharedSocialMedia;
+      'shared.title-subtitle-description': SharedTitleSubtitleDescription;
       'simple-components.column': SimpleComponentsColumn;
       'simple-components.contact-tree': SimpleComponentsContactTree;
       'simple-components.link': SimpleComponentsLink;

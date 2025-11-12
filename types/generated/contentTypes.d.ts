@@ -775,6 +775,12 @@ export interface ApiLinkLink extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    link_type: Schema.Attribute.Enumeration<['link', 'section']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::link.link'>;
     name: Schema.Attribute.String &
@@ -784,6 +790,12 @@ export interface ApiLinkLink extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    section: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -980,12 +992,6 @@ export interface ApiPageNewPageNew extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
-    content: Schema.Attribute.DynamicZone<['rooms.room-card']> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1001,6 +1007,10 @@ export interface ApiPageNewPageNew extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
+    page_sections: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-section.page-section'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false> &
       Schema.Attribute.SetPluginOptions<{
@@ -1032,6 +1042,92 @@ export interface ApiPageNewPageNew extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPageSectionPageSection extends Struct.CollectionTypeSchema {
+  collectionName: 'page_sections';
+  info: {
+    displayName: 'page_section';
+    pluralName: 'page-sections';
+    singularName: 'page-section';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    active: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<true>;
+    content: Schema.Attribute.DynamicZone<
+      ['rooms.room-card', 'sections.hero', 'sections.cards']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-section.page-section'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    page_new: Schema.Attribute.Relation<'manyToOne', 'api::page-new.page-new'>;
+    publishedAt: Schema.Attribute.DateTime;
+    site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'> &
+      Schema.Attribute.Private;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<
+        'plugin::auto-locales-slug.auto-locales-slug',
+        {
+          pattern: 'name';
+        }
+      > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    visual_setup: Schema.Attribute.Component<'design.visual-setup', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -1336,6 +1432,11 @@ export interface ApiSiteSite extends Struct.CollectionTypeSchema {
       Schema.Attribute.Unique;
     navbars: Schema.Attribute.Relation<'oneToMany', 'api::navbar.navbar'>;
     page_news: Schema.Attribute.Relation<'oneToMany', 'api::page-new.page-new'>;
+    page_sections: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-section.page-section'
+    > &
+      Schema.Attribute.Private;
     pages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>;
     plan_pivot: Schema.Attribute.Relation<
       'oneToOne',
@@ -1871,6 +1972,7 @@ declare module '@strapi/strapi' {
       'api::mail.mail': ApiMailMail;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::page-new.page-new': ApiPageNewPageNew;
+      'api::page-section.page-section': ApiPageSectionPageSection;
       'api::page.page': ApiPagePage;
       'api::plan-benefit.plan-benefit': ApiPlanBenefitPlanBenefit;
       'api::plan-pivot.plan-pivot': ApiPlanPivotPlanPivot;

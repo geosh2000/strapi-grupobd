@@ -1,0 +1,63 @@
+{
+    "collectionName": "components_design_visual_setups",
+    "info": {
+        "displayName": "visual_setup"
+    },
+    "options": {},
+    "attributes": {
+        "layout_variant": {
+            "type": "enumeration",
+            "enum": [
+                "full-screen",
+                "half",
+                "contained",
+                "split",
+                "minimal"
+            ]
+        },
+        "content_alignment": {
+            "type": "enumeration",
+            "enum": [
+                "left",
+                "center",
+                "right"
+            ]
+        },
+        "vertical_alignment": {
+            "type": "enumeration",
+            "enum": [
+                "top",
+                "center",
+                "bottom"
+            ]
+        },
+        "text_color_theme": {
+            "type": "enumeration",
+            "enum": [
+                "light",
+                "dark",
+                "custom"
+            ]
+        },
+        "custom_text_color": {
+            "type": "customField",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "text_color_theme"
+                        },
+                        "custom"
+                    ]
+                }
+            },
+            "customField": "plugin::color-picker.color",
+            "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+        },
+        "show_scroll_indicator": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "config": {}
+}

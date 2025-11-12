@@ -1,0 +1,110 @@
+{
+    "collectionName": "components_media_background_medias",
+    "info": {
+        "displayName": "background_media"
+    },
+    "options": {},
+    "attributes": {
+        "background_type": {
+            "type": "enumeration",
+            "enum": [
+                "none",
+                "image",
+                "video"
+            ]
+        },
+        "backgroud_image": {
+            "type": "media",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "background_type"
+                        },
+                        "image"
+                    ]
+                }
+            },
+            "multiple": false,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "background_video": {
+            "type": "media",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "background_type"
+                        },
+                        "video"
+                    ]
+                }
+            },
+            "multiple": false,
+            "allowedTypes": [
+                "videos"
+            ]
+        },
+        "background_color": {
+            "type": "customField",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "background_type"
+                        },
+                        "none"
+                    ]
+                }
+            },
+            "customField": "plugin::color-picker.color",
+            "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+        },
+        "overlay_enabled": {
+            "type": "boolean",
+            "conditions": {
+                "visible": {
+                    "!=": [
+                        {
+                            "var": "background_type"
+                        },
+                        "none"
+                    ]
+                }
+            }
+        },
+        "overlay_color": {
+            "type": "customField",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "overlay_enabled"
+                        },
+                        true
+                    ]
+                }
+            },
+            "customField": "plugin::color-picker.color",
+            "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+        },
+        "overlay_opacity": {
+            "type": "decimal",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "overlay_enabled"
+                        },
+                        true
+                    ]
+                }
+            },
+            "min": 0,
+            "max": 1
+        }
+    },
+    "config": {}
+}

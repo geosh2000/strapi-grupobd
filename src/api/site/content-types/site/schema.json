@@ -117,6 +117,13 @@
       "relation": "oneToOne",
       "target": "api::contact-info.contact-info",
       "mappedBy": "site"
+    },
+    "page_sections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page-section.page-section",
+      "private": true,
+      "mappedBy": "site"
     }
   }
 }

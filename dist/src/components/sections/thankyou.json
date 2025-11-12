@@ -1,0 +1,15 @@
+{
+    "collectionName": "components_sections_thankyous",
+    "info": {
+        "displayName": "thankyou"
+    },
+    "options": {},
+    "attributes": {
+        "content": {
+            "type": "component",
+            "component": "shared.title-subtitle-description",
+            "repeatable": false
+        }
+    },
+    "config": {}
+}

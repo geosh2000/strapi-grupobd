@@ -1,0 +1,120 @@
+{
+  "collectionName": "components_shared_single_cards",
+  "info": {
+    "displayName": "single_card"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "component",
+      "component": "shared.title-subtitle-description",
+      "repeatable": true
+    },
+    "order": {
+      "type": "integer",
+      "min": 0
+    },
+    "has_media": {
+      "type": "boolean",
+      "default": false
+    },
+    "media_type": {
+      "type": "enumeration",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_media"
+            },
+            true
+          ]
+        }
+      },
+      "enum": [
+        "icon",
+        "image",
+        "video"
+      ]
+    },
+    "card_icon": {
+      "type": "customField",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "media_type"
+            },
+            "icon"
+          ]
+        }
+      },
+      "customField": "plugin::strapi-plugin-iconhub.iconhub",
+      "options": {
+        "storeIconData": true,
+        "storeIconName": true
+      }
+    },
+    "card_image": {
+      "type": "media",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "media_type"
+            },
+            "image"
+          ]
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "card_video": {
+      "type": "media",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "media_type"
+            },
+            "video"
+          ]
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "videos"
+      ]
+    },
+    "has_cta": {
+      "type": "boolean",
+      "default": false
+    },
+    "cta": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_cta"
+            },
+            true
+          ]
+        }
+      },
+      "component": "buttons.cta",
+      "repeatable": false
+    },
+    "background_color": {
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+    }
+  },
+  "config": {}
+}

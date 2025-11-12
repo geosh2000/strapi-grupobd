@@ -1,10 +1,10 @@
 {
     "kind": "collectionType",
-    "collectionName": "page_news",
+    "collectionName": "page_sections",
     "info": {
-        "singularName": "page-new",
-        "pluralName": "page-news",
-        "displayName": "page_new"
+        "singularName": "page-section",
+        "pluralName": "page-sections",
+        "displayName": "page_section"
     },
     "options": {
         "draftAndPublish": true
@@ -19,15 +19,14 @@
             "type": "relation",
             "relation": "manyToOne",
             "target": "api::site.site",
-            "inversedBy": "page_news"
+            "private": true,
+            "inversedBy": "page_sections"
         },
-        "category": {
-            "type": "string",
-            "pluginOptions": {
-                "i18n": {
-                    "localized": false
-                }
-            }
+        "page_new": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::page-new.page-new",
+            "inversedBy": "page_sections"
         },
         "name": {
             "type": "string",
@@ -35,8 +34,7 @@
                 "i18n": {
                     "localized": false
                 }
-            },
-            "required": true
+            }
         },
         "slug": {
             "type": "customField",
@@ -51,29 +49,45 @@
                 "pattern": "name"
             }
         },
-        "title": {
-            "type": "string",
+        "active": {
+            "type": "boolean",
             "pluginOptions": {
                 "i18n": {
                     "localized": true
                 }
             },
-            "required": true
+            "default": true
         },
-        "page_sections": {
-            "type": "relation",
-            "relation": "oneToMany",
-            "target": "api::page-section.page-section",
-            "mappedBy": "page_new"
+        "order": {
+            "type": "integer",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "min": 0
         },
-        "seo": {
+        "content": {
+            "type": "dynamiczone",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "components": [
+                "rooms.room-card",
+                "sections.hero",
+                "sections.cards"
+            ]
+        },
+        "visual_setup": {
             "type": "component",
             "pluginOptions": {
                 "i18n": {
                     "localized": true
                 }
             },
-            "component": "shared.seo",
+            "component": "design.visual-setup",
             "repeatable": false
         }
     }

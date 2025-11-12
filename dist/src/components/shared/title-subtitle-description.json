@@ -1,0 +1,19 @@
+{
+    "collectionName": "components_shared_title_subtitle_descriptions",
+    "info": {
+        "displayName": "title_subtitle_description"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "subtitle": {
+            "type": "richtext"
+        },
+        "description": {
+            "type": "richtext"
+        }
+    },
+    "config": {}
+}

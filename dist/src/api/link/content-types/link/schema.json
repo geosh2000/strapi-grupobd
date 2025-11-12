@@ -29,6 +29,18 @@
                 }
             }
         },
+        "link_type": {
+            "type": "enumeration",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "enum": [
+                "link",
+                "section"
+            ]
+        },
         "link": {
             "type": "component",
             "pluginOptions": {
@@ -36,8 +48,36 @@
                     "localized": true
                 }
             },
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "link_type"
+                        },
+                        "link"
+                    ]
+                }
+            },
             "component": "simple-components.link",
             "repeatable": false
+        },
+        "section": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            },
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "link_type"
+                        },
+                        "section"
+                    ]
+                }
+            }
         }
     }
 }
