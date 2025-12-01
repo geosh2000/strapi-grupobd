@@ -79,7 +79,8 @@
         "sections.hero",
         "sections.cards",
         "sections.thankyou",
-        "sections.contact"
+        "sections.contact",
+        "shared.title-subtitle-description"
       ]
     },
     "visual_setup": {
