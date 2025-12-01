@@ -8,6 +8,19 @@
     "has_primary_cta": {
       "type": "boolean"
     },
+    "primary_cta_label": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_primary_cta"
+            },
+            true
+          ]
+        }
+      }
+    },
     "primary_cta_type": {
       "type": "enumeration",
       "conditions": {
@@ -64,6 +77,19 @@
           "==": [
             {
               "var": "has_primary_cta"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "secondary_cta_label": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "has_secondary_cta"
             },
             true
           ]
