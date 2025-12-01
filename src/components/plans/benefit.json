@@ -10,7 +10,7 @@
       "type": "string"
     },
     "details": {
-      "type": "string"
+      "type": "richtext"
     }
   },
   "config": {}

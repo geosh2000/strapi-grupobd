@@ -114,7 +114,7 @@ export interface PlansBenefit extends Struct.ComponentSchema {
     icon: 'crown';
   };
   attributes: {
-    details: Schema.Attribute.String;
+    details: Schema.Attribute.RichText;
     title: Schema.Attribute.String;
   };
 }
@@ -362,6 +362,25 @@ export interface SharedHtml extends Struct.ComponentSchema {
     section: Schema.Attribute.String;
     sort: Schema.Attribute.Integer;
     type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'html'>;
+  };
+}
+
+export interface SharedIconImage extends Struct.ComponentSchema {
+  collectionName: 'components_shared_icon_images';
+  info: {
+    displayName: 'icon_image';
+  };
+  attributes: {
+    icon: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-plugin-iconhub.iconhub',
+        {
+          storeIconData: true;
+          storeIconName: true;
+        }
+      >;
+    image: Schema.Attribute.Media<'images'>;
+    type: Schema.Attribute.Enumeration<['icon', 'image']>;
   };
 }
 
@@ -829,6 +848,7 @@ declare module '@strapi/strapi' {
       'shared.card': SharedCard;
       'shared.contact': SharedContact;
       'shared.html': SharedHtml;
+      'shared.icon-image': SharedIconImage;
       'shared.input': SharedInput;
       'shared.media': SharedMedia;
       'shared.nav-links': SharedNavLinks;
