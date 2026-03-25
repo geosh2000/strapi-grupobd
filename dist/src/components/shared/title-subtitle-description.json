@@ -13,6 +13,11 @@
         },
         "description": {
             "type": "richtext"
+        },
+        "cta": {
+            "type": "component",
+            "component": "buttons.cta",
+            "repeatable": true
         }
     },
     "config": {}

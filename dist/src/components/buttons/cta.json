@@ -22,20 +22,20 @@
                 }
             }
         },
-            "primary_cta_caption": {
-                "type": "string",
-                "required": false,
-                "conditions": {
-                    "visible": {
-                        "==": [
-                            {
-                                "var": "has_primary_cta"
-                            },
-                            true
-                        ]
-                    }
+        "primary_cta_caption": {
+            "type": "string",
+            "required": false,
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "has_primary_cta"
+                        },
+                        true
+                    ]
                 }
-            },
+            }
+        },
         "primary_cta_type": {
             "type": "enumeration",
             "conditions": {
@@ -112,20 +112,20 @@
                 }
             }
         },
-            "secondary_cta_caption": {
-                "type": "string",
-                "required": false,
-                "conditions": {
-                    "visible": {
-                        "==": [
-                            {
-                                "var": "has_secondary_cta"
-                            },
-                            true
-                        ]
-                    }
+        "secondary_cta_caption": {
+            "type": "string",
+            "required": false,
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "has_secondary_cta"
+                        },
+                        true
+                    ]
                 }
-            },
+            }
+        },
         "secondary_cta_type": {
             "type": "enumeration",
             "conditions": {
