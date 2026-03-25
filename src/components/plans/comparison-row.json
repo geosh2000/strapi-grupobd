@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_plans_comparison_rows",
+  "info": {
+    "displayName": "comparison-row",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "benefit_label": {
+      "type": "string",
+      "required": true
+    },
+    "benefit_details": {
+      "type": "richtext",
+      "required": false
+    },
+    "values": {
+      "type": "component",
+      "component": "plans.comparison-plan",
+      "repeatable": true,
+      "required": false
+    }
+  },
+  "config": {}
+}

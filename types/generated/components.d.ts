@@ -123,6 +123,35 @@ export interface PlansBenefit extends Struct.ComponentSchema {
   };
 }
 
+export interface PlansComparisonPlan extends Struct.ComponentSchema {
+  collectionName: 'components_plans_comparison_plans';
+  info: {
+    displayName: 'comparison-plan';
+    icon: 'check';
+  };
+  attributes: {
+    caption: Schema.Attribute.String;
+    included: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    plan: Schema.Attribute.Relation<'oneToOne', 'api::plan.plan'> &
+      Schema.Attribute.Required;
+  };
+}
+
+export interface PlansComparisonRow extends Struct.ComponentSchema {
+  collectionName: 'components_plans_comparison_rows';
+  info: {
+    displayName: 'comparison-row';
+    icon: 'bulletList';
+  };
+  attributes: {
+    benefit_details: Schema.Attribute.RichText;
+    benefit_label: Schema.Attribute.String & Schema.Attribute.Required;
+    values: Schema.Attribute.Component<'plans.comparison-plan', true>;
+  };
+}
+
 export interface PlansFeature extends Struct.ComponentSchema {
   collectionName: 'components_plans_features';
   info: {
@@ -238,6 +267,22 @@ export interface SectionsHero extends Struct.ComponentSchema {
     cta: Schema.Attribute.Component<'buttons.cta', false>;
     id_anchor: Schema.Attribute.String;
     tagline: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsPlanComparison extends Struct.ComponentSchema {
+  collectionName: 'components_sections_plan_comparisons';
+  info: {
+    displayName: 'plan-comparison';
+  };
+  attributes: {
+    content: Schema.Attribute.Component<
+      'shared.title-subtitle-description',
+      false
+    >;
+    id_anchor: Schema.Attribute.String;
+    plans: Schema.Attribute.Relation<'oneToMany', 'api::plan.plan'>;
+    rows: Schema.Attribute.Component<'plans.comparison-row', true>;
   };
 }
 
@@ -841,12 +886,15 @@ declare module '@strapi/strapi' {
       'mailing.header': MailingHeader;
       'media.background-media': MediaBackgroundMedia;
       'plans.benefit': PlansBenefit;
+      'plans.comparison-plan': PlansComparisonPlan;
+      'plans.comparison-row': PlansComparisonRow;
       'plans.feature': PlansFeature;
       'rooms.room-card': RoomsRoomCard;
       'rooms.specs': RoomsSpecs;
       'sections.cards': SectionsCards;
       'sections.contact': SectionsContact;
       'sections.hero': SectionsHero;
+      'sections.plan-comparison': SectionsPlanComparison;
       'sections.thankyou': SectionsThankyou;
       'shared.badge': SharedBadge;
       'shared.buttons': SharedButtons;

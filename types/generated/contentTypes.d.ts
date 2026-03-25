@@ -1073,6 +1073,7 @@ export interface ApiPageSectionPageSection extends Struct.CollectionTypeSchema {
         'rooms.room-card',
         'sections.hero',
         'sections.cards',
+        'sections.plan-comparison',
         'sections.thankyou',
         'sections.contact',
         'shared.title-subtitle-description',

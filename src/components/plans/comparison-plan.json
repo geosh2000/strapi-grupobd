@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_plans_comparison_plans",
+  "info": {
+    "displayName": "comparison-plan",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "plan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::plan.plan",
+      "required": true
+    },
+    "included": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "caption": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "config": {}
+}

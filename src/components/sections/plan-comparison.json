@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_sections_plan_comparisons",
+  "info": {
+    "displayName": "plan-comparison"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "component",
+      "component": "shared.title-subtitle-description",
+      "repeatable": false,
+      "required": false
+    },
+    "id_anchor": {
+      "type": "string",
+      "required": false
+    },
+    "plans": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::plan.plan"
+    },
+    "rows": {
+      "type": "component",
+      "component": "plans.comparison-row",
+      "repeatable": true,
+      "required": false
+    }
+  },
+  "config": {}
+}
