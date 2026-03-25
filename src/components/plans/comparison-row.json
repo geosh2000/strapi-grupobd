@@ -6,16 +6,87 @@
   },
   "options": {},
   "attributes": {
+    "row_type": {
+      "type": "enumeration",
+      "required": true,
+      "default": "benefit",
+      "enum": [
+        "benefit",
+        "separator"
+      ]
+    },
     "benefit_label": {
       "type": "string",
-      "required": true
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "row_type"
+            },
+            "benefit"
+          ]
+        }
+      },
+      "required": false
     },
     "benefit_details": {
       "type": "richtext",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "row_type"
+            },
+            "benefit"
+          ]
+        }
+      },
       "required": false
+    },
+    "separator_title": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "row_type"
+            },
+            "separator"
+          ]
+        }
+      },
+      "required": false
+    },
+    "separator_svg": {
+      "type": "customField",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "row_type"
+            },
+            "separator"
+          ]
+        }
+      },
+      "customField": "plugin::strapi-plugin-iconhub.iconhub",
+      "options": {
+        "storeIconData": true,
+        "storeIconName": true
+      }
     },
     "values": {
       "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "row_type"
+            },
+            "benefit"
+          ]
+        }
+      },
       "component": "plans.comparison-plan",
       "repeatable": true,
       "required": false

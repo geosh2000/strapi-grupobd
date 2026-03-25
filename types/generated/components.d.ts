@@ -147,7 +147,19 @@ export interface PlansComparisonRow extends Struct.ComponentSchema {
   };
   attributes: {
     benefit_details: Schema.Attribute.RichText;
-    benefit_label: Schema.Attribute.String & Schema.Attribute.Required;
+    benefit_label: Schema.Attribute.String;
+    row_type: Schema.Attribute.Enumeration<['benefit', 'separator']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'benefit'>;
+    separator_svg: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::strapi-plugin-iconhub.iconhub',
+        {
+          storeIconData: true;
+          storeIconName: true;
+        }
+      >;
+    separator_title: Schema.Attribute.String;
     values: Schema.Attribute.Component<'plans.comparison-plan', true>;
   };
 }
