@@ -8,12 +8,14 @@ export interface ButtonsCta extends Struct.ComponentSchema {
   attributes: {
     has_primary_cta: Schema.Attribute.Boolean;
     has_secondary_cta: Schema.Attribute.Boolean;
+    primary_cta_caption: Schema.Attribute.String;
     primary_cta_label: Schema.Attribute.String;
     primary_cta_link: Schema.Attribute.Text;
     primary_cta_style: Schema.Attribute.Enumeration<
       ['solid', 'outline', 'link']
     >;
     primary_cta_type: Schema.Attribute.Enumeration<['link', 'section', 'slug']>;
+    secondary_cta_caption: Schema.Attribute.String;
     secondary_cta_label: Schema.Attribute.String;
     secondary_cta_link: Schema.Attribute.Text;
     secondary_cta_style: Schema.Attribute.Enumeration<
