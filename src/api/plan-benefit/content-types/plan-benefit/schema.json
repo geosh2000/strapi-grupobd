@@ -21,6 +21,14 @@
       "target": "api::plan.plan",
       "inversedBy": "plan_benefits"
     },
+    "plan_name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "benefits": {
       "type": "component",
       "pluginOptions": {

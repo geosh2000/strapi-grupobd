@@ -312,6 +312,16 @@ export interface SectionsPlanComparison extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsPlanSelect extends Struct.ComponentSchema {
+  collectionName: 'components_sections_plan_selects';
+  info: {
+    displayName: 'plan-select';
+  };
+  attributes: {
+    plan: Schema.Attribute.Relation<'oneToOne', 'api::plan.plan'>;
+  };
+}
+
 export interface SectionsThankyou extends Struct.ComponentSchema {
   collectionName: 'components_sections_thankyous';
   info: {
@@ -1023,6 +1033,7 @@ declare module '@strapi/strapi' {
       'sections.contact': SectionsContact;
       'sections.hero': SectionsHero;
       'sections.plan-comparison': SectionsPlanComparison;
+      'sections.plan-select': SectionsPlanSelect;
       'sections.thankyou': SectionsThankyou;
       'shared.badge': SharedBadge;
       'shared.buttons': SharedButtons;

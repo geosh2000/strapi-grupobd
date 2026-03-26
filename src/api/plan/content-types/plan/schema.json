@@ -63,6 +63,32 @@
       "relation": "oneToMany",
       "target": "api::plan-benefit.plan-benefit",
       "mappedBy": "plan"
+    },
+    "nights": {
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "pro": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.plain-text",
+      "repeatable": true
     }
   }
 }

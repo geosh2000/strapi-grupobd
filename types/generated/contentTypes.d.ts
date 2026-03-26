@@ -1258,6 +1258,7 @@ export interface ApiPageSectionPageSection extends Struct.CollectionTypeSchema {
         'sections.contact',
         'shared.title-subtitle-description',
         'rooms.selected-room',
+        'sections.plan-select',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1438,6 +1439,12 @@ export interface ApiPlanBenefitPlanBenefit extends Struct.CollectionTypeSchema {
       'api::plan-benefit.plan-benefit'
     >;
     plan: Schema.Attribute.Relation<'manyToOne', 'api::plan.plan'>;
+    plan_name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1504,6 +1511,12 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     features: Schema.Attribute.Relation<'manyToMany', 'api::feature.feature'>;
     link_pasarela: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -1520,6 +1533,12 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    nights: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     plan_benefits: Schema.Attribute.Relation<
       'oneToMany',
       'api::plan-benefit.plan-benefit'
@@ -1529,6 +1548,12 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
       'api::plan-pivot.plan-pivot'
     >;
     price: Schema.Attribute.Decimal &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    pro: Schema.Attribute.Component<'shared.plain-text', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

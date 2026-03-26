@@ -57,9 +57,6 @@
         },
         "card_image": {
             "type": "component",
-            "component": "shared.media-opts-image",
-            "repeatable": false,
-            "required": false,
             "conditions": {
                 "visible": {
                     "==": [
@@ -69,13 +66,13 @@
                         "image"
                     ]
                 }
-            }
+            },
+            "component": "shared.media-opts-image",
+            "repeatable": false,
+            "required": false
         },
         "card_video": {
             "type": "component",
-            "component": "shared.media-opts-video",
-            "repeatable": false,
-            "required": false,
             "conditions": {
                 "visible": {
                     "==": [
@@ -85,13 +82,13 @@
                         "video"
                     ]
                 }
-            }
+            },
+            "component": "shared.media-opts-video",
+            "repeatable": false,
+            "required": false
         },
         "card_carousel": {
             "type": "component",
-            "component": "shared.media-opts-carousel",
-            "repeatable": false,
-            "required": false,
             "conditions": {
                 "visible": {
                     "==": [
@@ -101,7 +98,10 @@
                         "carousel"
                     ]
                 }
-            }
+            },
+            "component": "shared.media-opts-carousel",
+            "repeatable": false,
+            "required": false
         },
         "has_cta": {
             "type": "boolean",
@@ -109,12 +109,6 @@
         },
         "cta_mode": {
             "type": "enumeration",
-            "enum": [
-                "simple",
-                "existing"
-            ],
-            "default": "simple",
-            "required": false,
             "conditions": {
                 "visible": {
                     "==": [
@@ -124,7 +118,13 @@
                         true
                     ]
                 }
-            }
+            },
+            "required": false,
+            "default": "simple",
+            "enum": [
+                "simple",
+                "existing"
+            ]
         },
         "cta": {
             "type": "component",

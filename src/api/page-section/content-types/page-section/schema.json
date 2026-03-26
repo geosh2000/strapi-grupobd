@@ -82,7 +82,8 @@
         "sections.thankyou",
         "sections.contact",
         "shared.title-subtitle-description",
-        "rooms.selected-room"
+        "rooms.selected-room",
+        "sections.plan-select"
       ]
     },
     "visual_setup": {

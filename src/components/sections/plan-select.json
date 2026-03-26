@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_plan_selects",
+  "info": {
+    "displayName": "plan-select"
+  },
+  "options": {},
+  "attributes": {
+    "plan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::plan.plan"
+    }
+  },
+  "config": {}
+}
