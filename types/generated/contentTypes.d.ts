@@ -454,8 +454,8 @@ export interface ApiAllInclusiveFeatureAllInclusiveFeature
         };
       }> &
       Schema.Attribute.DefaultTo<true>;
-    all_inclusive_plans: Schema.Attribute.Relation<
-      'oneToMany',
+    all_inclusive_plan: Schema.Attribute.Relation<
+      'manyToOne',
       'api::all-inclusive-plan.all-inclusive-plan'
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -496,8 +496,8 @@ export interface ApiAllInclusivePlanAllInclusivePlan
     };
   };
   attributes: {
-    all_inclusive_feature: Schema.Attribute.Relation<
-      'manyToOne',
+    all_inclusive_features: Schema.Attribute.Relation<
+      'oneToMany',
       'api::all-inclusive-feature.all-inclusive-feature'
     >;
     createdAt: Schema.Attribute.DateTime;

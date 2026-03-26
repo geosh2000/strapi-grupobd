@@ -15,11 +15,11 @@
         }
     },
     "attributes": {
-        "all_inclusive_plans": {
+        "all_inclusive_plan": {
             "type": "relation",
-            "relation": "oneToMany",
+            "relation": "manyToOne",
             "target": "api::all-inclusive-plan.all-inclusive-plan",
-            "mappedBy": "all_inclusive_feature"
+            "inversedBy": "all_inclusive_features"
         },
         "feature": {
             "type": "string",

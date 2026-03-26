@@ -38,11 +38,11 @@
                 }
             }
         },
-        "all_inclusive_feature": {
+        "all_inclusive_features": {
             "type": "relation",
-            "relation": "manyToOne",
+            "relation": "oneToMany",
             "target": "api::all-inclusive-feature.all-inclusive-feature",
-            "inversedBy": "all_inclusive_plans"
+            "mappedBy": "all_inclusive_plan"
         }
     }
 }
