@@ -114,8 +114,14 @@
             "type": "boolean",
             "default": false
         },
-        "cta": {
-            "type": "component",
+        "cta_mode": {
+            "type": "enumeration",
+            "enum": [
+                "simple",
+                "existing"
+            ],
+            "default": "simple",
+            "required": false,
             "conditions": {
                 "visible": {
                     "==": [
@@ -125,9 +131,62 @@
                         true
                     ]
                 }
+            }
+        },
+        "cta": {
+            "type": "component",
+            "conditions": {
+                "visible": {
+                    "and": [
+                        {
+                            "==": [
+                                {
+                                    "var": "has_cta"
+                                },
+                                true
+                            ]
+                        },
+                        {
+                            "==": [
+                                {
+                                    "var": "cta_mode"
+                                },
+                                "simple"
+                            ]
+                        }
+                    ]
+                }
             },
             "component": "buttons.cta",
             "repeatable": false
+        },
+        "selected_cta": {
+            "type": "component",
+            "conditions": {
+                "visible": {
+                    "and": [
+                        {
+                            "==": [
+                                {
+                                    "var": "has_cta"
+                                },
+                                true
+                            ]
+                        },
+                        {
+                            "==": [
+                                {
+                                    "var": "cta_mode"
+                                },
+                                "existing"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "component": "buttons.selected-cta",
+            "repeatable": false,
+            "required": false
         },
         "background_color": {
             "type": "customField",

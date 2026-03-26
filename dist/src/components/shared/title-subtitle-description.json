@@ -14,10 +14,45 @@
         "description": {
             "type": "richtext"
         },
+        "cta_mode": {
+            "type": "enumeration",
+            "enum": [
+                "simple",
+                "existing"
+            ],
+            "default": "simple",
+            "required": false
+        },
         "cta": {
             "type": "component",
             "component": "buttons.cta",
-            "repeatable": true
+            "repeatable": true,
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "cta_mode"
+                        },
+                        "simple"
+                    ]
+                }
+            }
+        },
+        "selected_cta": {
+            "type": "component",
+            "component": "buttons.selected-cta",
+            "repeatable": true,
+            "required": false,
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "cta_mode"
+                        },
+                        "existing"
+                    ]
+                }
+            }
         },
         "footer": {
             "type": "richtext"

@@ -288,7 +288,10 @@ export interface SectionsHero extends Struct.ComponentSchema {
       false
     >;
     cta: Schema.Attribute.Component<'buttons.cta', false>;
+    cta_mode: Schema.Attribute.Enumeration<['simple', 'existing']> &
+      Schema.Attribute.DefaultTo<'simple'>;
     id_anchor: Schema.Attribute.String;
+    selected_cta: Schema.Attribute.Component<'buttons.selected-cta', false>;
     tagline: Schema.Attribute.String;
   };
 }
@@ -788,6 +791,8 @@ export interface SharedSingleCard extends Struct.ComponentSchema {
       true
     >;
     cta: Schema.Attribute.Component<'buttons.cta', false>;
+    cta_mode: Schema.Attribute.Enumeration<['simple', 'existing']> &
+      Schema.Attribute.DefaultTo<'simple'>;
     has_cta: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     has_media: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     media_type: Schema.Attribute.Enumeration<
@@ -800,6 +805,7 @@ export interface SharedSingleCard extends Struct.ComponentSchema {
         },
         number
       >;
+    selected_cta: Schema.Attribute.Component<'buttons.selected-cta', false>;
   };
 }
 
@@ -857,8 +863,11 @@ export interface SharedTitleSubtitleDescription extends Struct.ComponentSchema {
   };
   attributes: {
     cta: Schema.Attribute.Component<'buttons.cta', true>;
+    cta_mode: Schema.Attribute.Enumeration<['simple', 'existing']> &
+      Schema.Attribute.DefaultTo<'simple'>;
     description: Schema.Attribute.RichText;
     footer: Schema.Attribute.RichText;
+    selected_cta: Schema.Attribute.Component<'buttons.selected-cta', true>;
     subtitle: Schema.Attribute.RichText;
     title: Schema.Attribute.String;
   };

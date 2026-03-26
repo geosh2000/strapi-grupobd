@@ -23,11 +23,46 @@
       "repeatable": false,
       "required": false
     },
+    "cta_mode": {
+      "type": "enumeration",
+      "enum": [
+        "simple",
+        "existing"
+      ],
+      "default": "simple",
+      "required": false
+    },
     "cta": {
       "type": "component",
       "component": "buttons.cta",
       "repeatable": false,
-      "required": false
+      "required": false,
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "cta_mode"
+            },
+            "simple"
+          ]
+        }
+      }
+    },
+    "selected_cta": {
+      "type": "component",
+      "component": "buttons.selected-cta",
+      "repeatable": false,
+      "required": false,
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "cta_mode"
+            },
+            "existing"
+          ]
+        }
+      }
     }
   },
   "config": {}
