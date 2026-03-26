@@ -773,7 +773,10 @@ export interface SharedSingleCard extends Struct.ComponentSchema {
   attributes: {
     background_color: Schema.Attribute.String &
       Schema.Attribute.CustomField<'plugin::color-picker.color'>;
-    card_carousel: Schema.Attribute.Media<'images' | 'videos', true>;
+    card_carousel: Schema.Attribute.Component<
+      'shared.media-opts-carousel',
+      false
+    >;
     card_icon: Schema.Attribute.JSON &
       Schema.Attribute.CustomField<
         'plugin::strapi-plugin-iconhub.iconhub',
@@ -782,10 +785,8 @@ export interface SharedSingleCard extends Struct.ComponentSchema {
           storeIconName: true;
         }
       >;
-    card_image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    card_video: Schema.Attribute.Media<'videos'>;
+    card_image: Schema.Attribute.Component<'shared.media-opts-image', false>;
+    card_video: Schema.Attribute.Component<'shared.media-opts-video', false>;
     content: Schema.Attribute.Component<
       'shared.title-subtitle-description',
       true

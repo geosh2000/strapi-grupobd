@@ -56,7 +56,10 @@
             }
         },
         "card_image": {
-            "type": "media",
+            "type": "component",
+            "component": "shared.media-opts-image",
+            "repeatable": false,
+            "required": false,
             "conditions": {
                 "visible": {
                     "==": [
@@ -66,17 +69,13 @@
                         "image"
                     ]
                 }
-            },
-            "multiple": false,
-            "allowedTypes": [
-                "images",
-                "files",
-                "videos",
-                "audios"
-            ]
+            }
         },
         "card_video": {
-            "type": "media",
+            "type": "component",
+            "component": "shared.media-opts-video",
+            "repeatable": false,
+            "required": false,
             "conditions": {
                 "visible": {
                     "==": [
@@ -86,14 +85,13 @@
                         "video"
                     ]
                 }
-            },
-            "multiple": false,
-            "allowedTypes": [
-                "videos"
-            ]
+            }
         },
         "card_carousel": {
-            "type": "media",
+            "type": "component",
+            "component": "shared.media-opts-carousel",
+            "repeatable": false,
+            "required": false,
             "conditions": {
                 "visible": {
                     "==": [
@@ -103,12 +101,7 @@
                         "carousel"
                     ]
                 }
-            },
-            "multiple": true,
-            "allowedTypes": [
-                "images",
-                "videos"
-            ]
+            }
         },
         "has_cta": {
             "type": "boolean",
