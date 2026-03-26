@@ -1,0 +1,21 @@
+{
+    "collectionName": "components_sections_faq_selects",
+    "info": {
+        "displayName": "faq-select",
+        "icon": "bulletList"
+    },
+    "options": {},
+    "attributes": {
+        "content": {
+            "type": "component",
+            "component": "shared.title-subtitle-description",
+            "repeatable": false
+        },
+        "faq": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::faq.faq"
+        }
+    },
+    "config": {}
+}

@@ -1259,6 +1259,7 @@ export interface ApiPageSectionPageSection extends Struct.CollectionTypeSchema {
         'shared.title-subtitle-description',
         'rooms.selected-room',
         'sections.plan-select',
+        'sections.faq-select',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

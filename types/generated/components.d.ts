@@ -276,6 +276,21 @@ export interface SectionsContact extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsFaqSelect extends Struct.ComponentSchema {
+  collectionName: 'components_sections_faq_selects';
+  info: {
+    displayName: 'faq-select';
+    icon: 'bulletList';
+  };
+  attributes: {
+    content: Schema.Attribute.Component<
+      'shared.title-subtitle-description',
+      false
+    >;
+    faq: Schema.Attribute.Relation<'oneToOne', 'api::faq.faq'>;
+  };
+}
+
 export interface SectionsHero extends Struct.ComponentSchema {
   collectionName: 'components_sections_heroes';
   info: {
@@ -1031,6 +1046,7 @@ declare module '@strapi/strapi' {
       'rooms.specs': RoomsSpecs;
       'sections.cards': SectionsCards;
       'sections.contact': SectionsContact;
+      'sections.faq-select': SectionsFaqSelect;
       'sections.hero': SectionsHero;
       'sections.plan-comparison': SectionsPlanComparison;
       'sections.plan-select': SectionsPlanSelect;
