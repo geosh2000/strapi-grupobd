@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "all_inclusive_features",
+  "info": {
+    "singularName": "all-inclusive-feature",
+    "pluralName": "all-inclusive-features",
+    "displayName": "all-inclusive-feature"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "all_inclusive_plans": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::all-inclusive-plan.all-inclusive-plan",
+      "mappedBy": "all_inclusive_feature"
+    },
+    "feature": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "active": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": true
+    }
+  }
+}

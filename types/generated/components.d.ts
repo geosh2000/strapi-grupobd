@@ -189,21 +189,12 @@ export interface RoomsRoomCard extends Struct.ComponentSchema {
     >;
     description: Schema.Attribute.Blocks;
     main_picture: Schema.Attribute.Media<'images'>;
-    name: Schema.Attribute.String;
     room_amenities: Schema.Attribute.Relation<
       'oneToMany',
       'api::room-amenity.room-amenity'
     >;
     room_specs: Schema.Attribute.Component<'rooms.specs', false>;
     short_description: Schema.Attribute.Blocks;
-    slug: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.CustomField<
-        'plugin::auto-locales-slug.auto-locales-slug',
-        {
-          pattern: 'name';
-        }
-      >;
     view_360: Schema.Attribute.Boolean;
     view_360_url: Schema.Attribute.String;
   };
@@ -221,6 +212,7 @@ export interface RoomsSpecs extends Struct.ComponentSchema {
     area_m2: Schema.Attribute.Integer;
     area_sq_ft: Schema.Attribute.Integer;
     bedding: Schema.Attribute.String;
+    capacity: Schema.Attribute.Integer;
     has_balcony: Schema.Attribute.Boolean;
     has_sofa_bed: Schema.Attribute.Boolean;
     pet_allowed: Schema.Attribute.Boolean;

@@ -1,0 +1,62 @@
+{
+    "kind": "collectionType",
+    "collectionName": "rooms",
+    "info": {
+        "singularName": "room",
+        "pluralName": "rooms",
+        "displayName": "room"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "hotel": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::hotel.hotel",
+            "inversedBy": "rooms"
+        },
+        "all_inclusive_plan": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::all-inclusive-plan.all-inclusive-plan"
+        },
+        "name": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "required": true
+        },
+        "slug": {
+            "type": "customField",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "customField": "plugin::auto-locales-slug.auto-locales-slug",
+            "required": true,
+            "options": {
+                "pattern": "name"
+            }
+        },
+        "room_card": {
+            "type": "component",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "component": "rooms.room-card",
+            "repeatable": false
+        }
+    }
+}

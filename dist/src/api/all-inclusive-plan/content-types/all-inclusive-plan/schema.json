@@ -1,0 +1,48 @@
+{
+    "kind": "collectionType",
+    "collectionName": "all_inclusive_plans",
+    "info": {
+        "singularName": "all-inclusive-plan",
+        "pluralName": "all-inclusive-plans",
+        "displayName": "all-inclusive-plan"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "hotels": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::hotel.hotel",
+            "mappedBy": "all_inclusive_plan"
+        },
+        "name": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "required": true
+        },
+        "notes": {
+            "type": "richtext",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "all_inclusive_feature": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::all-inclusive-feature.all-inclusive-feature",
+            "inversedBy": "all_inclusive_plans"
+        }
+    }
+}

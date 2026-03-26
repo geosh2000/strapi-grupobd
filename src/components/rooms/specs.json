@@ -6,6 +6,9 @@
   },
   "options": {},
   "attributes": {
+    "capacity": {
+      "type": "integer"
+    },
     "area_m2": {
       "type": "integer"
     },

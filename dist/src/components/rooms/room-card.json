@@ -6,17 +6,6 @@
     },
     "options": {},
     "attributes": {
-        "name": {
-            "type": "string"
-        },
-        "slug": {
-            "type": "customField",
-            "customField": "plugin::auto-locales-slug.auto-locales-slug",
-            "required": true,
-            "options": {
-                "pattern": "name"
-            }
-        },
         "description": {
             "type": "blocks"
         },
