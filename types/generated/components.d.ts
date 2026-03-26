@@ -27,6 +27,17 @@ export interface ButtonsCta extends Struct.ComponentSchema {
   };
 }
 
+export interface ButtonsSelectedCta extends Struct.ComponentSchema {
+  collectionName: 'components_buttons_selected_ctas';
+  info: {
+    displayName: 'selected-cta';
+    icon: 'link';
+  };
+  attributes: {
+    cta: Schema.Attribute.Relation<'oneToOne', 'api::cta.cta'>;
+  };
+}
+
 export interface DesignVisualSetup extends Struct.ComponentSchema {
   collectionName: 'components_design_visual_setups';
   info: {
@@ -985,6 +996,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'buttons.cta': ButtonsCta;
+      'buttons.selected-cta': ButtonsSelectedCta;
       'design.visual-setup': DesignVisualSetup;
       'faq.faq': FaqFaq;
       'mailing.footer': MailingFooter;

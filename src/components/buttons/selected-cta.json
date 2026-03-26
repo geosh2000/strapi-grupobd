@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_buttons_selected_ctas",
+  "info": {
+    "displayName": "selected-cta",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "cta": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cta.cta"
+    }
+  },
+  "config": {}
+}

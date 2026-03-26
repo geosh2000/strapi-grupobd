@@ -1,0 +1,42 @@
+{
+    "kind": "collectionType",
+    "collectionName": "ctas",
+    "info": {
+        "singularName": "cta",
+        "pluralName": "ctas",
+        "displayName": "cta"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "page_new": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::page-new.page-new"
+        },
+        "name": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "cta": {
+            "type": "component",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "component": "buttons.cta",
+            "repeatable": false
+        }
+    }
+}
