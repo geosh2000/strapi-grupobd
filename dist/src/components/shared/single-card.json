@@ -33,7 +33,8 @@
             "enum": [
                 "icon",
                 "image",
-                "video"
+                "video",
+                "carousel"
             ]
         },
         "card_icon": {
@@ -88,6 +89,24 @@
             },
             "multiple": false,
             "allowedTypes": [
+                "videos"
+            ]
+        },
+        "card_carousel": {
+            "type": "media",
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "media_type"
+                        },
+                        "carousel"
+                    ]
+                }
+            },
+            "multiple": true,
+            "allowedTypes": [
+                "images",
                 "videos"
             ]
         },
