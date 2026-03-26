@@ -197,6 +197,17 @@ export interface RoomsRoomCard extends Struct.ComponentSchema {
   };
 }
 
+export interface RoomsSelectedRoom extends Struct.ComponentSchema {
+  collectionName: 'components_rooms_selected_rooms';
+  info: {
+    displayName: 'selected-room';
+    icon: 'bulletList';
+  };
+  attributes: {
+    rooms: Schema.Attribute.Relation<'oneToMany', 'api::room.room'>;
+  };
+}
+
 export interface RoomsSpecs extends Struct.ComponentSchema {
   collectionName: 'components_rooms_specs';
   info: {
@@ -984,6 +995,7 @@ declare module '@strapi/strapi' {
       'plans.comparison-row': PlansComparisonRow;
       'plans.feature': PlansFeature;
       'rooms.room-card': RoomsRoomCard;
+      'rooms.selected-room': RoomsSelectedRoom;
       'rooms.specs': RoomsSpecs;
       'sections.cards': SectionsCards;
       'sections.contact': SectionsContact;

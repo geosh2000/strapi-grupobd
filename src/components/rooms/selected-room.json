@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_rooms_selected_rooms",
+  "info": {
+    "displayName": "selected-room",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "rooms": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::room.room"
+    }
+  },
+  "config": {}
+}

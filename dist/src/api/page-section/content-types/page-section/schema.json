@@ -81,7 +81,8 @@
                 "sections.plan-comparison",
                 "sections.thankyou",
                 "sections.contact",
-                "shared.title-subtitle-description"
+                "shared.title-subtitle-description",
+                "rooms.selected-room"
             ]
         },
         "visual_setup": {
