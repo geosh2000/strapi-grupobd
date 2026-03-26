@@ -18,6 +18,9 @@
       "type": "component",
       "component": "buttons.cta",
       "repeatable": true
+    },
+    "footer": {
+      "type": "richtext"
     }
   },
   "config": {}

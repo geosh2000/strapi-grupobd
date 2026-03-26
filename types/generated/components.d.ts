@@ -755,6 +755,7 @@ export interface SharedTitleSubtitleDescription extends Struct.ComponentSchema {
   attributes: {
     cta: Schema.Attribute.Component<'buttons.cta', true>;
     description: Schema.Attribute.RichText;
+    footer: Schema.Attribute.RichText;
     subtitle: Schema.Attribute.RichText;
     title: Schema.Attribute.String;
   };
