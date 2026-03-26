@@ -1,0 +1,51 @@
+{
+    "collectionName": "components_shared_media_opts_images",
+    "info": {
+        "displayName": "media opts image",
+        "icon": "picture"
+    },
+    "options": {},
+    "attributes": {
+        "source": {
+            "type": "enumeration",
+            "enum": [
+                "local",
+                "url"
+            ],
+            "default": "local",
+            "required": true
+        },
+        "local_media": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images"
+            ],
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "source"
+                        },
+                        "local"
+                    ]
+                }
+            }
+        },
+        "media_url": {
+            "type": "text",
+            "required": false,
+            "conditions": {
+                "visible": {
+                    "==": [
+                        {
+                            "var": "source"
+                        },
+                        "url"
+                    ]
+                }
+            }
+        }
+    },
+    "config": {}
+}

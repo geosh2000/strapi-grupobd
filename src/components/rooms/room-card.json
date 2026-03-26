@@ -12,23 +12,6 @@
     "short_description": {
       "type": "blocks"
     },
-    "main_picture": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "carrousel": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "view_360": {
       "type": "boolean"
     },
@@ -54,6 +37,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::room-amenity.room-amenity"
+    },
+    "main_picture": {
+      "type": "component",
+      "component": "shared.media-opts-image",
+      "repeatable": false
+    },
+    "carousel": {
+      "type": "component",
+      "component": "shared.media-opts-carousel",
+      "repeatable": false
     }
   },
   "config": {}

@@ -1,0 +1,54 @@
+{
+  "collectionName": "components_shared_media_opts",
+  "info": {
+    "displayName": "media opts",
+    "icon": "file-video"
+  },
+  "options": {},
+  "attributes": {
+    "source": {
+      "type": "enumeration",
+      "enum": [
+        "local",
+        "url"
+      ],
+      "default": "local",
+      "required": true
+    },
+    "local_media": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "videos",
+        "files",
+        "audios"
+      ],
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "source"
+            },
+            "local"
+          ]
+        }
+      }
+    },
+    "media_url": {
+      "type": "text",
+      "required": false,
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "source"
+            },
+            "url"
+          ]
+        }
+      }
+    }
+  },
+  "config": {}
+}

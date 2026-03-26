@@ -183,12 +183,9 @@ export interface RoomsRoomCard extends Struct.ComponentSchema {
     icon: 'stack';
   };
   attributes: {
-    carrousel: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    carousel: Schema.Attribute.Component<'shared.media-opts-carousel', false>;
     description: Schema.Attribute.Blocks;
-    main_picture: Schema.Attribute.Media<'images'>;
+    main_picture: Schema.Attribute.Component<'shared.media-opts-image', false>;
     room_amenities: Schema.Attribute.Relation<
       'oneToMany',
       'api::room-amenity.room-amenity'
@@ -492,6 +489,95 @@ export interface SharedMedia extends Struct.ComponentSchema {
     section: Schema.Attribute.String;
     sort: Schema.Attribute.Integer;
     type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'media'>;
+  };
+}
+
+export interface SharedMediaOpts extends Struct.ComponentSchema {
+  collectionName: 'components_shared_media_opts';
+  info: {
+    displayName: 'media opts';
+    icon: 'file-video';
+  };
+  attributes: {
+    local_media: Schema.Attribute.Media<
+      'images' | 'videos' | 'files' | 'audios'
+    >;
+    media_url: Schema.Attribute.Text;
+    source: Schema.Attribute.Enumeration<['local', 'url']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'local'>;
+  };
+}
+
+export interface SharedMediaOptsCarousel extends Struct.ComponentSchema {
+  collectionName: 'components_shared_media_opts_carousels';
+  info: {
+    displayName: 'media opts carousel';
+    icon: 'dashboard';
+  };
+  attributes: {
+    local_media: Schema.Attribute.Media<'images' | 'videos', true>;
+    media_urls: Schema.Attribute.Component<'shared.media-url', true>;
+    source: Schema.Attribute.Enumeration<['local', 'url']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'local'>;
+  };
+}
+
+export interface SharedMediaOptsFile extends Struct.ComponentSchema {
+  collectionName: 'components_shared_media_opts_files';
+  info: {
+    displayName: 'media opts file';
+    icon: 'file';
+  };
+  attributes: {
+    local_media: Schema.Attribute.Media<'files'>;
+    media_url: Schema.Attribute.Text;
+    source: Schema.Attribute.Enumeration<['local', 'url']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'local'>;
+  };
+}
+
+export interface SharedMediaOptsImage extends Struct.ComponentSchema {
+  collectionName: 'components_shared_media_opts_images';
+  info: {
+    displayName: 'media opts image';
+    icon: 'picture';
+  };
+  attributes: {
+    local_media: Schema.Attribute.Media<'images'>;
+    media_url: Schema.Attribute.Text;
+    source: Schema.Attribute.Enumeration<['local', 'url']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'local'>;
+  };
+}
+
+export interface SharedMediaOptsVideo extends Struct.ComponentSchema {
+  collectionName: 'components_shared_media_opts_videos';
+  info: {
+    displayName: 'media opts video';
+    icon: 'play';
+  };
+  attributes: {
+    local_media: Schema.Attribute.Media<'videos'>;
+    media_url: Schema.Attribute.Text;
+    source: Schema.Attribute.Enumeration<['local', 'url']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'local'>;
+  };
+}
+
+export interface SharedMediaUrl extends Struct.ComponentSchema {
+  collectionName: 'components_shared_media_urls';
+  info: {
+    displayName: 'media url';
+    icon: 'link';
+  };
+  attributes: {
+    caption: Schema.Attribute.String;
+    url: Schema.Attribute.Text & Schema.Attribute.Required;
   };
 }
 
@@ -912,6 +998,12 @@ declare module '@strapi/strapi' {
       'shared.icon-image': SharedIconImage;
       'shared.input': SharedInput;
       'shared.media': SharedMedia;
+      'shared.media-opts': SharedMediaOpts;
+      'shared.media-opts-carousel': SharedMediaOptsCarousel;
+      'shared.media-opts-file': SharedMediaOptsFile;
+      'shared.media-opts-image': SharedMediaOptsImage;
+      'shared.media-opts-video': SharedMediaOptsVideo;
+      'shared.media-url': SharedMediaUrl;
       'shared.nav-links': SharedNavLinks;
       'shared.open-graph': SharedOpenGraph;
       'shared.plain-text': SharedPlainText;

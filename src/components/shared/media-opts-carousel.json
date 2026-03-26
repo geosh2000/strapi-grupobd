@@ -1,0 +1,54 @@
+{
+  "collectionName": "components_shared_media_opts_carousels",
+  "info": {
+    "displayName": "media opts carousel",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "source": {
+      "type": "enumeration",
+      "enum": [
+        "local",
+        "url"
+      ],
+      "default": "local",
+      "required": true
+    },
+    "local_media": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "source"
+            },
+            "local"
+          ]
+        }
+      }
+    },
+    "media_urls": {
+      "type": "component",
+      "component": "shared.media-url",
+      "repeatable": true,
+      "required": false,
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "source"
+            },
+            "url"
+          ]
+        }
+      }
+    }
+  },
+  "config": {}
+}

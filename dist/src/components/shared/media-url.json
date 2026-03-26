@@ -1,0 +1,19 @@
+{
+    "collectionName": "components_shared_media_urls",
+    "info": {
+        "displayName": "media url",
+        "icon": "link"
+    },
+    "options": {},
+    "attributes": {
+        "url": {
+            "type": "text",
+            "required": true
+        },
+        "caption": {
+            "type": "string",
+            "required": false
+        }
+    },
+    "config": {}
+}
