@@ -79,6 +79,119 @@ const getPlanName = async (
   return null;
 };
 
+const getButtonsCtasByIds = async (strapi: any, componentIds: number[]) => {
+  if (componentIds.length === 0) {
+    return [];
+  }
+
+  const rows = await strapi.db.connection('components_buttons_ctas').select('*').whereIn('id', componentIds);
+  const rowsById = new Map(rows.map((row: Record<string, unknown>) => [row.id, row]));
+
+  return componentIds
+    .map((componentId) => rowsById.get(componentId))
+    .filter((row): row is Record<string, unknown> => Boolean(row));
+};
+
+const getComponentCtaSet = async (
+  strapi: any,
+  parent: { id?: number; cta_mode?: string | null } | null | undefined,
+  cmpsTable: string
+) => {
+  if (typeof parent?.id !== 'number') {
+    return [];
+  }
+
+  if (parent.cta_mode === 'existing') {
+    const selectedCtaRows = await strapi.db
+      .connection(cmpsTable)
+      .select('cmp_id')
+      .where({
+        entity_id: parent.id,
+        field: 'selected_cta',
+        component_type: 'buttons.selected-cta',
+      })
+      .orderBy('order', 'asc');
+
+    const selectedCtaIds = selectedCtaRows
+      .map((row: { cmp_id?: number }) => row.cmp_id)
+      .filter((cmpId: unknown): cmpId is number => typeof cmpId === 'number');
+
+    if (selectedCtaIds.length === 0) {
+      return [];
+    }
+
+    const selectedLinks = await strapi.db
+      .connection('components_buttons_selected_ctas_cta_lnk')
+      .select('selected_cta_id', 'cta_id')
+      .whereIn('selected_cta_id', selectedCtaIds);
+
+    const ctaIdsInOrder = selectedCtaIds
+      .map((selectedCtaId) =>
+        selectedLinks.find((link: { selected_cta_id?: number; cta_id?: number }) => link.selected_cta_id === selectedCtaId)
+          ?.cta_id ?? null
+      )
+      .filter((ctaId: unknown): ctaId is number => typeof ctaId === 'number');
+
+    if (ctaIdsInOrder.length === 0) {
+      return [];
+    }
+
+    const ctaComponentRows = await strapi.db
+      .connection('ctas_cmps')
+      .select('entity_id', 'cmp_id')
+      .where({
+        field: 'cta',
+        component_type: 'buttons.cta',
+      })
+      .whereIn('entity_id', ctaIdsInOrder);
+
+    const ctaComponentIds = ctaIdsInOrder
+      .map((ctaId) =>
+        ctaComponentRows.find((row: { entity_id?: number; cmp_id?: number }) => row.entity_id === ctaId)?.cmp_id ?? null
+      )
+      .filter((cmpId: unknown): cmpId is number => typeof cmpId === 'number');
+
+    return getButtonsCtasByIds(strapi, ctaComponentIds);
+  }
+
+  const ctaRows = await strapi.db
+    .connection(cmpsTable)
+    .select('cmp_id')
+    .where({
+      entity_id: parent.id,
+      field: 'cta',
+      component_type: 'buttons.cta',
+    })
+    .orderBy('order', 'asc');
+
+  const ctaComponentIds = ctaRows
+    .map((row: { cmp_id?: number }) => row.cmp_id)
+    .filter((cmpId: unknown): cmpId is number => typeof cmpId === 'number');
+
+  return getButtonsCtasByIds(strapi, ctaComponentIds);
+};
+
+const getTitleSubtitleDescriptionCtaSet = async (
+  strapi: any,
+  parent: { id?: number; cta_mode?: string | null } | null | undefined
+) => {
+  return getComponentCtaSet(strapi, parent, 'components_shared_title_subtitle_descriptions_cmps');
+};
+
+const getHeroCtaSet = async (
+  strapi: any,
+  parent: { id?: number; cta_mode?: string | null } | null | undefined
+) => {
+  return getComponentCtaSet(strapi, parent, 'components_sections_heroes_cmps');
+};
+
+const getSingleCardCtaSet = async (
+  strapi: any,
+  parent: { id?: number; cta_mode?: string | null } | null | undefined
+) => {
+  return getComponentCtaSet(strapi, parent, 'components_shared_single_cards_cmps');
+};
+
 export default {
   /**
    * An asynchronous register function that runs before
@@ -98,12 +211,45 @@ export default {
         extend type ComponentPlansComparisonPlan {
           planName: String
         }
+
+        extend type ComponentSharedTitleSubtitleDescription {
+          ctaSet: [ComponentButtonsCta]
+        }
+
+        extend type ComponentSectionsHero {
+          ctaSet: [ComponentButtonsCta]
+        }
+
+        extend type ComponentSharedSingleCard {
+          ctaSet: [ComponentButtonsCta]
+        }
       `,
       resolvers: {
         ComponentPlansComparisonPlan: {
           planName: {
             resolve: async (parent: { id?: number; plan?: unknown }) => {
               return getPlanName(strapi, parent);
+            },
+          },
+        },
+        ComponentSharedTitleSubtitleDescription: {
+          ctaSet: {
+            resolve: async (parent: { id?: number; cta_mode?: string | null }) => {
+              return getTitleSubtitleDescriptionCtaSet(strapi, parent);
+            },
+          },
+        },
+        ComponentSectionsHero: {
+          ctaSet: {
+            resolve: async (parent: { id?: number; cta_mode?: string | null }) => {
+              return getHeroCtaSet(strapi, parent);
+            },
+          },
+        },
+        ComponentSharedSingleCard: {
+          ctaSet: {
+            resolve: async (parent: { id?: number; cta_mode?: string | null }) => {
+              return getSingleCardCtaSet(strapi, parent);
             },
           },
         },
