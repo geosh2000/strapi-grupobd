@@ -9,8 +9,39 @@
     "label": {
       "type": "string"
     },
+    "link_type": {
+      "type": "enumeration",
+      "default": "url",
+      "enum": [
+        "url",
+        "section"
+      ]
+    },
+    "section": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "link_type"
+            },
+            "section"
+          ]
+        }
+      }
+    },
     "href": {
-      "type": "text"
+      "type": "text",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "link_type"
+            },
+            "url"
+          ]
+        }
+      }
     },
     "target": {
       "type": "enumeration",
@@ -24,12 +55,10 @@
     "order": {
       "type": "integer"
     },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
+    "link_icon": {
+      "type": "component",
+      "component": "shared.icon-image",
+      "repeatable": false
     }
   },
   "config": {}

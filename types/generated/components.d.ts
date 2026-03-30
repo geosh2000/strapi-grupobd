@@ -945,9 +945,12 @@ export interface SimpleComponentsLink extends Struct.ComponentSchema {
   };
   attributes: {
     href: Schema.Attribute.Text;
-    icon: Schema.Attribute.Media<'images'>;
     label: Schema.Attribute.String;
+    link_icon: Schema.Attribute.Component<'shared.icon-image', false>;
+    link_type: Schema.Attribute.Enumeration<['url', 'section']> &
+      Schema.Attribute.DefaultTo<'url'>;
     order: Schema.Attribute.Integer;
+    section: Schema.Attribute.String;
     target: Schema.Attribute.Enumeration<
       ['_self', '_blank', '_parent', '_top']
     >;
