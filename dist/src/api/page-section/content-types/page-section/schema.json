@@ -91,7 +91,7 @@
             "type": "component",
             "pluginOptions": {
                 "i18n": {
-                    "localized": true
+                    "localized": false
                 }
             },
             "component": "design.visual-setup",

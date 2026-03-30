@@ -1316,7 +1316,7 @@ export interface ApiPageSectionPageSection extends Struct.CollectionTypeSchema {
     visual_setup: Schema.Attribute.Component<'design.visual-setup', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
   };
