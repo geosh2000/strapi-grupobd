@@ -1089,12 +1089,19 @@ export interface ApiNavbarNavbar extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    cta: Schema.Attribute.Component<'shared.buttons', false> &
+    cta: Schema.Attribute.Component<'buttons.cta', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    cta_mode: Schema.Attribute.Enumeration<['simple', 'existing']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'simple'>;
     links: Schema.Attribute.Relation<'oneToMany', 'api::link.link'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::navbar.navbar'>;
@@ -1125,6 +1132,12 @@ export interface ApiNavbarNavbar extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<true>;
+    selected_cta: Schema.Attribute.Component<'buttons.selected-cta', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{

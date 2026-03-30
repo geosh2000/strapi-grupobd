@@ -80,8 +80,51 @@
           "localized": true
         }
       },
-      "component": "shared.buttons",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "cta_mode"
+            },
+            "simple"
+          ]
+        }
+      },
+      "component": "buttons.cta",
       "repeatable": false
+    },
+    "cta_mode": {
+      "type": "enumeration",
+      "enum": [
+        "simple",
+        "existing"
+      ],
+      "default": "simple",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "selected_cta": {
+      "type": "component",
+      "component": "buttons.selected-cta",
+      "repeatable": true,
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "cta_mode"
+            },
+            "existing"
+          ]
+        }
+      },
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "links": {
       "type": "relation",

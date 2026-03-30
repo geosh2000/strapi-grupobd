@@ -192,6 +192,13 @@ const getSingleCardCtaSet = async (
   return getComponentCtaSet(strapi, parent, 'components_shared_single_cards_cmps');
 };
 
+const getNavbarCtaSet = async (
+  strapi: any,
+  parent: { id?: number; cta_mode?: string | null } | null | undefined
+) => {
+  return getComponentCtaSet(strapi, parent, 'navbars_cmps');
+};
+
 const getLinkDestination = async (
   strapi: any,
   parent:
@@ -297,6 +304,10 @@ export default {
           ctaSet: [ComponentButtonsCta]
         }
 
+        extend type Navbar {
+          ctaSet: [ComponentButtonsCta]
+        }
+
         extend type Link {
           destination: String
         }
@@ -331,6 +342,13 @@ export default {
           ctaSet: {
             resolve: async (parent: { id?: number; cta_mode?: string | null }) => {
               return getSingleCardCtaSet(strapi, parent);
+            },
+          },
+        },
+        Navbar: {
+          ctaSet: {
+            resolve: async (parent: { id?: number; cta_mode?: string | null }) => {
+              return getNavbarCtaSet(strapi, parent);
             },
           },
         },

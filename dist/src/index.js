@@ -140,6 +140,9 @@ const getHeroCtaSet = async (strapi, parent) => {
 const getSingleCardCtaSet = async (strapi, parent) => {
     return getComponentCtaSet(strapi, parent, 'components_shared_single_cards_cmps');
 };
+const getNavbarCtaSet = async (strapi, parent) => {
+    return getComponentCtaSet(strapi, parent, 'navbars_cmps');
+};
 const getLinkDestination = async (strapi, parent) => {
     var _a, _b, _c, _d, _e;
     if (!parent) {
@@ -222,6 +225,10 @@ exports.default = {
           ctaSet: [ComponentButtonsCta]
         }
 
+        extend type Navbar {
+          ctaSet: [ComponentButtonsCta]
+        }
+
         extend type Link {
           destination: String
         }
@@ -256,6 +263,13 @@ exports.default = {
                     ctaSet: {
                         resolve: async (parent) => {
                             return getSingleCardCtaSet(strapi, parent);
+                        },
+                    },
+                },
+                Navbar: {
+                    ctaSet: {
+                        resolve: async (parent) => {
+                            return getNavbarCtaSet(strapi, parent);
                         },
                     },
                 },
