@@ -25,21 +25,17 @@
       "type": "string",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
-    "link_type": {
-      "type": "enumeration",
+    "label": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "enum": [
-        "link",
-        "section"
-      ]
+      }
     },
     "link": {
       "type": "component",
@@ -60,24 +56,6 @@
       },
       "component": "simple-components.link",
       "repeatable": false
-    },
-    "section": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "conditions": {
-        "visible": {
-          "==": [
-            {
-              "var": "link_type"
-            },
-            "section"
-          ]
-        }
-      }
     }
   }
 }

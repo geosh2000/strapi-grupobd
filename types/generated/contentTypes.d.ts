@@ -949,13 +949,13 @@ export interface ApiLinkLink extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    link: Schema.Attribute.Component<'simple-components.link', false> &
+    label: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    link_type: Schema.Attribute.Enumeration<['link', 'section']> &
+    link: Schema.Attribute.Component<'simple-components.link', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -966,16 +966,10 @@ export interface ApiLinkLink extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
-    section: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
           localized: false;
         };
       }>;
+    publishedAt: Schema.Attribute.DateTime;
     site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
