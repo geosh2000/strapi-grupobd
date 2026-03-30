@@ -36,16 +36,6 @@
           "localized": true
         }
       },
-      "conditions": {
-        "visible": {
-          "==": [
-            {
-              "var": "link_type"
-            },
-            "link"
-          ]
-        }
-      },
       "component": "simple-components.link",
       "repeatable": false
     }
