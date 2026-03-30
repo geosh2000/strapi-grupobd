@@ -148,8 +148,14 @@ const getLinkDestination = async (strapi, parent) => {
     if (parent.link_type === 'section') {
         return (_a = parent.section) !== null && _a !== void 0 ? _a : null;
     }
+    if (parent.link_type === 'url' && parent.href) {
+        return parent.href;
+    }
     if (parent.link_type === 'link' && ((_b = parent.link) === null || _b === void 0 ? void 0 : _b.href)) {
         return parent.link.href;
+    }
+    if (parent.href) {
+        return parent.href;
     }
     let entity = null;
     if (typeof parent.documentId === 'string' && parent.documentId.length > 0) {
@@ -219,6 +225,10 @@ exports.default = {
         extend type Link {
           destination: String
         }
+
+        extend type ComponentSimpleComponentsLink {
+          destination: String
+        }
       `,
             resolvers: {
                 ComponentPlansComparisonPlan: {
@@ -250,6 +260,13 @@ exports.default = {
                     },
                 },
                 Link: {
+                    destination: {
+                        resolve: async (parent) => {
+                            return getLinkDestination(strapi, parent);
+                        },
+                    },
+                },
+                ComponentSimpleComponentsLink: {
                     destination: {
                         resolve: async (parent) => {
                             return getLinkDestination(strapi, parent);

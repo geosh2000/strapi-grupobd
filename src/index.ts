@@ -200,6 +200,7 @@ const getLinkDestination = async (
         documentId?: string;
         link_type?: string | null;
         section?: string | null;
+        href?: string | null;
         link?: { href?: string | null } | null;
       }
     | null
@@ -213,8 +214,16 @@ const getLinkDestination = async (
     return parent.section ?? null;
   }
 
+  if (parent.link_type === 'url' && parent.href) {
+    return parent.href;
+  }
+
   if (parent.link_type === 'link' && parent.link?.href) {
     return parent.link.href;
+  }
+
+  if (parent.href) {
+    return parent.href;
   }
 
   let entity: { link_type?: string | null; section?: string | null; link?: { href?: string | null } | null } | null = null;
@@ -291,6 +300,10 @@ export default {
         extend type Link {
           destination: String
         }
+
+        extend type ComponentSimpleComponentsLink {
+          destination: String
+        }
       `,
       resolvers: {
         ComponentPlansComparisonPlan: {
@@ -328,6 +341,21 @@ export default {
               documentId?: string;
               link_type?: string | null;
               section?: string | null;
+              href?: string | null;
+              link?: { href?: string | null } | null;
+            }) => {
+              return getLinkDestination(strapi, parent);
+            },
+          },
+        },
+        ComponentSimpleComponentsLink: {
+          destination: {
+            resolve: async (parent: {
+              id?: number;
+              documentId?: string;
+              link_type?: string | null;
+              section?: string | null;
+              href?: string | null;
               link?: { href?: string | null } | null;
             }) => {
               return getLinkDestination(strapi, parent);
