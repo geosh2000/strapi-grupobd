@@ -1244,7 +1244,7 @@ export interface ApiPageSectionPageSection extends Struct.CollectionTypeSchema {
     active: Schema.Attribute.Boolean &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }> &
       Schema.Attribute.DefaultTo<true>;
@@ -1284,7 +1284,7 @@ export interface ApiPageSectionPageSection extends Struct.CollectionTypeSchema {
     order: Schema.Attribute.Integer &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }> &
       Schema.Attribute.SetMinMax<
@@ -1537,7 +1537,7 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
     nights: Schema.Attribute.Integer &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     plan_benefits: Schema.Attribute.Relation<
@@ -1596,7 +1596,7 @@ export interface ApiRoomAmenityRoomAmenity extends Struct.CollectionTypeSchema {
     featured: Schema.Attribute.Boolean &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }> &
       Schema.Attribute.DefaultTo<false>;
