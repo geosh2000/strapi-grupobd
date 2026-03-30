@@ -192,6 +192,70 @@ const getSingleCardCtaSet = async (
   return getComponentCtaSet(strapi, parent, 'components_shared_single_cards_cmps');
 };
 
+const getLinkDestination = async (
+  strapi: any,
+  parent:
+    | {
+        id?: number;
+        documentId?: string;
+        link_type?: string | null;
+        section?: string | null;
+        link?: { href?: string | null } | null;
+      }
+    | null
+    | undefined
+) => {
+  if (!parent) {
+    return null;
+  }
+
+  if (parent.link_type === 'section') {
+    return parent.section ?? null;
+  }
+
+  if (parent.link_type === 'link' && parent.link?.href) {
+    return parent.link.href;
+  }
+
+  let entity: { link_type?: string | null; section?: string | null; link?: { href?: string | null } | null } | null = null;
+
+  if (typeof parent.documentId === 'string' && parent.documentId.length > 0) {
+    entity = await strapi.documents('api::link.link').findOne({
+      documentId: parent.documentId,
+      fields: ['link_type', 'section'],
+      populate: {
+        link: {
+          fields: ['href'],
+        },
+      },
+    });
+  } else if (typeof parent.id === 'number') {
+    entity = await strapi.db.query('api::link.link').findOne({
+      where: { id: parent.id },
+      select: ['link_type', 'section'],
+      populate: {
+        link: {
+          select: ['href'],
+        },
+      },
+    });
+  }
+
+  if (!entity) {
+    return null;
+  }
+
+  if (entity.link_type === 'section') {
+    return entity.section ?? null;
+  }
+
+  if (entity.link_type === 'link') {
+    return entity.link?.href ?? null;
+  }
+
+  return null;
+};
+
 export default {
   /**
    * An asynchronous register function that runs before
@@ -223,6 +287,10 @@ export default {
         extend type ComponentSharedSingleCard {
           ctaSet: [ComponentButtonsCta]
         }
+
+        extend type Link {
+          destination: String
+        }
       `,
       resolvers: {
         ComponentPlansComparisonPlan: {
@@ -250,6 +318,19 @@ export default {
           ctaSet: {
             resolve: async (parent: { id?: number; cta_mode?: string | null }) => {
               return getSingleCardCtaSet(strapi, parent);
+            },
+          },
+        },
+        Link: {
+          destination: {
+            resolve: async (parent: {
+              id?: number;
+              documentId?: string;
+              link_type?: string | null;
+              section?: string | null;
+              link?: { href?: string | null } | null;
+            }) => {
+              return getLinkDestination(strapi, parent);
             },
           },
         },

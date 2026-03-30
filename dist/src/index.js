@@ -140,6 +140,51 @@ const getHeroCtaSet = async (strapi, parent) => {
 const getSingleCardCtaSet = async (strapi, parent) => {
     return getComponentCtaSet(strapi, parent, 'components_shared_single_cards_cmps');
 };
+const getLinkDestination = async (strapi, parent) => {
+    var _a, _b, _c, _d, _e;
+    if (!parent) {
+        return null;
+    }
+    if (parent.link_type === 'section') {
+        return (_a = parent.section) !== null && _a !== void 0 ? _a : null;
+    }
+    if (parent.link_type === 'link' && ((_b = parent.link) === null || _b === void 0 ? void 0 : _b.href)) {
+        return parent.link.href;
+    }
+    let entity = null;
+    if (typeof parent.documentId === 'string' && parent.documentId.length > 0) {
+        entity = await strapi.documents('api::link.link').findOne({
+            documentId: parent.documentId,
+            fields: ['link_type', 'section'],
+            populate: {
+                link: {
+                    fields: ['href'],
+                },
+            },
+        });
+    }
+    else if (typeof parent.id === 'number') {
+        entity = await strapi.db.query('api::link.link').findOne({
+            where: { id: parent.id },
+            select: ['link_type', 'section'],
+            populate: {
+                link: {
+                    select: ['href'],
+                },
+            },
+        });
+    }
+    if (!entity) {
+        return null;
+    }
+    if (entity.link_type === 'section') {
+        return (_c = entity.section) !== null && _c !== void 0 ? _c : null;
+    }
+    if (entity.link_type === 'link') {
+        return (_e = (_d = entity.link) === null || _d === void 0 ? void 0 : _d.href) !== null && _e !== void 0 ? _e : null;
+    }
+    return null;
+};
 exports.default = {
     /**
      * An asynchronous register function that runs before
@@ -170,6 +215,10 @@ exports.default = {
         extend type ComponentSharedSingleCard {
           ctaSet: [ComponentButtonsCta]
         }
+
+        extend type Link {
+          destination: String
+        }
       `,
             resolvers: {
                 ComponentPlansComparisonPlan: {
@@ -197,6 +246,13 @@ exports.default = {
                     ctaSet: {
                         resolve: async (parent) => {
                             return getSingleCardCtaSet(strapi, parent);
+                        },
+                    },
+                },
+                Link: {
+                    destination: {
+                        resolve: async (parent) => {
+                            return getLinkDestination(strapi, parent);
                         },
                     },
                 },
