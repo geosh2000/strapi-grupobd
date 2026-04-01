@@ -9,6 +9,11 @@
             "type": "relation",
             "relation": "oneToOne",
             "target": "api::plan.plan"
+        },
+        "content": {
+            "type": "component",
+            "component": "shared.title-subtitle-description",
+            "repeatable": false
         }
     },
     "config": {}

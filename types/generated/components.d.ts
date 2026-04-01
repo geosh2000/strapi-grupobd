@@ -333,6 +333,10 @@ export interface SectionsPlanSelect extends Struct.ComponentSchema {
     displayName: 'plan-select';
   };
   attributes: {
+    content: Schema.Attribute.Component<
+      'shared.title-subtitle-description',
+      false
+    >;
     plan: Schema.Attribute.Relation<'oneToOne', 'api::plan.plan'>;
   };
 }
