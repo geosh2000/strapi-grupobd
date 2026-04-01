@@ -1563,6 +1563,12 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
       }>;
     publishedAt: Schema.Attribute.DateTime;
     site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
+    terms_conditions: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
