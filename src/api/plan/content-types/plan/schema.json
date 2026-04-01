@@ -90,14 +90,6 @@
       "component": "shared.plain-text",
       "repeatable": true
     },
-    "terms_conditions": {
-      "type": "richtext",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "terms_condition": {
       "type": "relation",
       "relation": "oneToOne",

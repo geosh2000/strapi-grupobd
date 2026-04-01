@@ -1567,12 +1567,6 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
       'oneToOne',
       'api::terms-condition.terms-condition'
     >;
-    terms_conditions: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
