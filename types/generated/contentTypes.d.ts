@@ -1770,6 +1770,12 @@ export interface ApiTermsConditionTermsCondition
       'oneToMany',
       'api::terms-condition.terms-condition'
     >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     subtitle: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{

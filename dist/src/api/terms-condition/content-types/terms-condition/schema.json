@@ -15,7 +15,7 @@
         }
     },
     "attributes": {
-        "version": {
+        "name": {
             "type": "string",
             "pluginOptions": {
                 "i18n": {
@@ -24,6 +24,14 @@
             }
         },
         "subtitle": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "version": {
             "type": "string",
             "pluginOptions": {
                 "i18n": {
