@@ -1563,6 +1563,10 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
       }>;
     publishedAt: Schema.Attribute.DateTime;
     site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
+    terms_condition: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::terms-condition.terms-condition'
+    >;
     terms_conditions: Schema.Attribute.RichText &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1738,6 +1742,56 @@ export interface ApiSiteSite extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTermsConditionTermsCondition
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'terms_conditions';
+  info: {
+    displayName: 'terms_condition';
+    pluralName: 'terms-conditions';
+    singularName: 'terms-condition';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::terms-condition.terms-condition'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    subtitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    terms_conditions: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    version: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -2273,6 +2327,7 @@ declare module '@strapi/strapi' {
       'api::room-amenity.room-amenity': ApiRoomAmenityRoomAmenity;
       'api::room.room': ApiRoomRoom;
       'api::site.site': ApiSiteSite;
+      'api::terms-condition.terms-condition': ApiTermsConditionTermsCondition;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

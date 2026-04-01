@@ -97,6 +97,11 @@
                     "localized": true
                 }
             }
+        },
+        "terms_condition": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::terms-condition.terms-condition"
         }
     }
 }
